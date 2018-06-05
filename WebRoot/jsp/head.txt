@@ -1,0 +1,68 @@
+﻿<nav class="navbar navbar-expand-md aa ">
+    <div class="cc1">
+        <ul class="navbar-nav bb">
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="jsp/index.jsp">首页</a>
+            </li>
+            <li class="nav-item" id="register">
+                <a class="nav-link text-dark" href="jsp/register.jsp">注册</a>
+            </li>
+            <li class="nav-item" id="login">
+                <a class="nav-link text-dark" href="jsp/login.jsp">登录</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="jsp/center.jsp">个人中心</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="jsp/order.jsp">我的预约</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="jsp/collect.jsp">收藏夹</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="jsp/contact.jsp">联系我们</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<script type="text/javascript">
+
+
+                $(document).ready(function () {
+
+                    $.ajax({
+                        type: "POST",
+                        url: "sessionask",
+                        data: {
+                        },
+
+                        success: function (data) {
+                            $("#register").html("<a class='nav-link text-dark' href='#'>您好！" + data.username + "</a>");
+                            $("#login").html("<a class='nav-link text-dark' href='javascript:logout();'>注销</a>");
+                        },
+                        error: function (jqXHR) {
+                            alert("发生错误：" + jqXHR.status);
+                        }
+                    });
+                });
+                function logout() {
+                    if (confirm("您确定要退出账号？")) {
+                        $.ajax({
+                            type: "POST",
+                            url: "logout1",
+                            data: {
+                            },
+
+                            success: function (data) {
+                                $("#register").html("<a class='nav-link text-dark' href='jsp/register.jsp'>注册</a>");
+                                $("#login").html("<a class='nav-link text-dark' href='jsp/login.jsp'>登录</a>");
+                            },
+                            error: function (jqXHR) {
+                                alert("发生错误：" + jqXHR.status);
+                            }
+                        });
+                    }
+                }
+
+
+            </script>

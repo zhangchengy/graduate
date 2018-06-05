@@ -1,0 +1,6 @@
+﻿ <div class="head">
+            <img src="images/logo.jpg" class="float-left dd"> 
+            <input type="text" id="search" placeholder="请输入关键字"><button id="search_submit" onclick="">搜索</button>
+            <img src="images/phone.jpg" class="phone" />
+            <label id="head_phone">12345671234</label>
+        </div>

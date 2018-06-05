@@ -3,18 +3,27 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
  <hibernate-mapping>
-     <class name="shop.customer.domain.Customer" table="s_customer">
+     <class name="shop.customer.domain.Customer" table="customer">
          <id name="cid" column="cid" type="integer">
              <generator class="native"></generator>
          </id>
-         <property name="cname" length="10">  
-             <column name="cname"></column>
+         <property name="userphone" length="12">  
+             <column name="userphone"></column>
          </property>
-         <property name="cpassword"  length="16" type="integer">
-             <column name="cpassword"></column>
+         <property name="sex" length="5">  
+             <column name="sex"></column>
          </property>
-         <property name="birthday"  >
-             <column name="birthday"></column>
+         <property name="username"  length="20" type="string">
+             <column name="username"></column>
+         </property>
+         <property name="password"  length="20" type="string">
+             <column name="password"></column>
+         </property>
+         <property name="address"  length="100" type="string">
+             <column name="address"></column>
+         </property>
+         <property name="userbirthday" type="string"  >
+             <column name="userbirthday"></column>
          </property>
      </class>
  </hibernate-mapping>

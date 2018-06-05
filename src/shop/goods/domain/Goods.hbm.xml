@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+     <class name="shop.Goods.domain.Goods" table="s_goods">
+         <id name="cid" column="cid" type="integer">
+             <generator class="native"></generator>
+         </id> 
+         <property name="number" length="20">  
+             <column name="number"></column>
+         </property>
+         <property name="name"  length="40" type="string">
+             <column name="name"></column>
+         </property>
+         <property name="variety"  length="20" type="string">
+             <column name="variety"></column>
+         </property>
+         <property name="price"   type="float">
+             <column name="price"></column>
+         </property>
+         <property name="image"   type="string" length="40">
+             <column name="image"></column>
+         </property>   
+         <property name="intro" type="string" length="100">
+             <column name="intro"></column>
+         </property>
+     </class>
+ </hibernate-mapping>

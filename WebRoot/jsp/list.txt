@@ -1,0 +1,49 @@
+﻿<script type="text/javascript">
+    $(function(){
+        $(".nav>li").hover(function(){
+            $(this).children('ul').stop(true,true).show(300);
+        },function(){
+            $(this).children('ul').stop(true,true).hide(300);
+        })
+    })
+</script>
+<section id="navigation">
+    <div class="menu">
+        <ul class="nav">
+            <li><a href="javascript:void(0);"  id="all_sale">全部产品分类</a>
+                <ul class="sub-nav">
+                    <li><a href="#">卫浴</a></li>
+                    <li><a href="#">客厅</a></li>
+                    <li><a href="#">厨房</a></li>
+                    <li><a href="#">卧室</a></li>
+                    <li><a href="#">餐厅</a></li>
+                    <li><a href="#">其他</a></li>
+                </ul>
+            </li>
+            <li><a href="#">首页</a>
+                
+            </li>
+            <li><a href="#">空间体验</a>
+                <ul class="sub-nav">
+                    <li><a href="#">空间体验</a></li>
+                    <li><a href="#">五感体验</a></li>
+                </ul>
+            </li>
+            <li><a href="#">定制服务</a>
+                <ul class="sub-nav">
+                    <li><a href="#">定制流程</a></li>
+                    <li><a href="#">实体门店</a></li>
+                    <li><a href="#">售后服务</a></li>
+                    </ul>
+            </li>
+            <li><a href="#">设计家居顶</a>
+                
+            </li>
+            <li><a href="#">在线留言</a>
+                
+            </li>
+        </ul>
+    </div>
+    
+    
+</section>
