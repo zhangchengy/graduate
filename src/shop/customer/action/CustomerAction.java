@@ -41,12 +41,6 @@ public class CustomerAction extends ActionSupport implements
 	}
 
 	public void setCustomer(Customer customer) {
-
-		this.customer.setUserphone(customer.getUserphone());
-		this.customer.setUsername(customer.getUsername());
-		this.customer.setPassword(customer.getPassword());
-		this.customer.setAddress(customer.getAddress());
-		this.customer.setUserbirthday(customer.getUserbirthday());
 		this.customer = customer;
 	}
 
