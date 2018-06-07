@@ -17,18 +17,17 @@
 								data: {
 									userphone: $.trim($("#userphone").val()),						
 								},
-								
+								dataType : "json",
 								success: function (data) {
 									$("#show-in").append("<br>信息："+data.msg);
 									$("#show-in").append("<br>用户名：" + data.list[0].username+"生日："+data.list[0].userbirthday);
-									$("#show-in").append("<br>用户名：" + data.list[1].username+"生日："+data.list[1].userbirthday);
-									
+									location.href="jsp/index.jsp";	
 								},
 								error: function (jqXHR) {
 									alert("发生错误：" + jqXHR.status);
 								}
 							});
-							location.href="jsp/index.jsp";
+						
 						});
 				});
 				
@@ -37,7 +36,7 @@
 	</head>
 
 	<body>
-
+		<%@ include file="head.txt" %>
 		<table align="center" class="ab">
 			<tr>
 				<td colspan="2">

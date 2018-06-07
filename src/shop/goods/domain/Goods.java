@@ -1,14 +1,24 @@
 package shop.goods.domain;
 
 public class Goods {
+	int cid;
 	private String number;
 	private String name;
 	private String variety;
 	private float price;
 	private String image;
 	private String intro;
-	public Goods(String number, String name, String variety, float price,
-			String image, String intro) {
+	
+	public Goods() {
+
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public Goods(int cid, String number, String name, String variety,
+			float price, String image, String intro) {
+		super();
+		this.cid = cid;
 		this.number = number;
 		this.name = name;
 		this.variety = variety;
@@ -16,9 +26,16 @@ public class Goods {
 		this.image = image;
 		this.intro = intro;
 	}
-	public Goods() {
-		// TODO Auto-generated constructor stub
+
+
+	public int getCid() {
+		return cid;
 	}
+
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+
 	public String getNumber() {
 		return number;
 	}

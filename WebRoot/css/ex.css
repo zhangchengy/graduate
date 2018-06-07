@@ -16,8 +16,10 @@
 
 .cc1 {
     width: 67%;
-    font-size: 14px;
+    font-size: 16px;
     margin: 0 auto;
+    padding-top:2px;
+    padding-bottom:3px;
 }
 
 .head {

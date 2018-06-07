@@ -27,12 +27,13 @@ public class SessionAction extends ActionSupport implements SessionAware  {
 		// TODO Auto-generated method stub
 		this.session=session;
 	}
+	
 	public String send(){
 		this.customer=this.session.get("user");
 		
 		return SUCCESS;
 	}
-	public String logout2(){
+	public String logout(){
 		this.session.clear();
 		return SUCCESS;
 	}

@@ -11,7 +11,7 @@
                 <a class="nav-link text-dark" href="jsp/login.jsp">登录</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="jsp/center.jsp">个人中心</a>
+                <a class="nav-link text-dark" href="javascript:checksession();">个人中心</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" href="jsp/order.jsp">我的预约</a>
@@ -27,42 +27,64 @@
 </nav>
 <script type="text/javascript">
 
-
+    
                 $(document).ready(function () {
-
+                    
                     $.ajax({
                         type: "POST",
                         url: "sessionask",
                         data: {
                         },
-
+                        dataType : "json",
                         success: function (data) {
+                            if(data!=null){
                             $("#register").html("<a class='nav-link text-dark' href='#'>您好！" + data.username + "</a>");
                             $("#login").html("<a class='nav-link text-dark' href='javascript:logout();'>注销</a>");
+                            customer=data.username;
+                            }
+                            else{
+                                customer=null;
+                            }
+                            
                         },
                         error: function (jqXHR) {
                             alert("发生错误：" + jqXHR.status);
                         }
                     });
+                    if(customer==null){
+                        if(location.pathname=="/dingwang/jsp/center.jsp"){ 
+                            location.href="jsp/login.jsp";
+                              alert(customer); 
+                        }
+                    }                   
                 });
                 function logout() {
                     if (confirm("您确定要退出账号？")) {
                         $.ajax({
                             type: "POST",
-                            url: "logout1",
+                            url: "writeoff",
                             data: {
                             },
-
+                            dataType : "json",
                             success: function (data) {
                                 $("#register").html("<a class='nav-link text-dark' href='jsp/register.jsp'>注册</a>");
-                                $("#login").html("<a class='nav-link text-dark' href='jsp/login.jsp'>登录</a>");
+                                $("#login").html("<a class='nav-link text-dark' href='jsp/login.jsp'>登录</a>");                               
                             },
                             error: function (jqXHR) {
                                 alert("发生错误：" + jqXHR.status);
                             }
                         });
+                        location.href="jsp/login.jsp";
                     }
                 }
 
+                function checksession() {
+                    if(customer!=null){
+                        location.href="jsp/center.jsp";
+                    }
+                    else{
+                        location.href="jsp/login.jsp";
+                    }                
+                }
 
-            </script>
+</script>

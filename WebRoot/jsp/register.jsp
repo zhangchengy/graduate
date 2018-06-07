@@ -75,7 +75,7 @@ $(document).ready(function(){
 	function showdiv() {
 		document.getElementById("bg").style.display = "block";
 		document.getElementById("myModel").style.display = "block";
-		countDown(3,'ex/index.jsp');
+		countDown(3,'jsp/index.jsp');
 	}
 	function hidediv() {
 		document.getElementById("bg").style.display = 'none';
@@ -111,7 +111,7 @@ $(document).ready(function(){
 			<li class="b"><a href="jsp/login.jsp"> <span class="dcd">请登录</span>
 			</a></li>
 			<span id="user_name"></span>
-			<li class="b"><a href="login.jsp"> <span class="c">成为会员</span>
+			<li class="b"><a href="javascript:void(0)"> <span class="c">成为会员</span>
 			</a></li>
 
 			<li class="b"><a href="self_order.jsp"> <span class="c">我的预约</span>

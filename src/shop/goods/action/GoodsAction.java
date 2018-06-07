@@ -1,11 +1,14 @@
 package shop.goods.action;
 
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONObject;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
-
 import shop.goods.domain.Goods;
 import shop.goods.service.GoodsService;
 
@@ -44,6 +47,16 @@ public class GoodsAction extends ActionSupport implements
 	
 	public String addGoods(){
 		goodsService.addGoods(goods);
+		return SUCCESS;
+	}
+	public String findGoodsByNumber(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String number = request.getParameter("number");
+		Goods goods=goodsService.findGoodsByNumber(number);
+		msg="find successfully!";
+		jsonobject.put("msg", msg);
+		jsonobject.put("goods", goods);
+		session.put("goods", goods);
 		return SUCCESS;
 	}
 

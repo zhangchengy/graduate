@@ -38,7 +38,13 @@
 				<prop key="hibernate.current_session_context_class">thread</prop>
 			</props>
 		</property>
-		<property name="mappingResources" value="shop/customer/domain/Customer.hbm.xml"></property>
+		<property name="mappingResources">
+		<list>
+		
+		<value>shop/customer/domain/Customer.hbm.xml</value>
+		<value>shop/goods/domain/Goods.hbm.xml</value>
+		</list>
+		</property>
 	</bean>
 
 
@@ -60,8 +66,8 @@
 	
 	<bean id="customerAction" class="shop.customer.action.CustomerAction" scope="prototype">
 	<property name="customerService" ref="customerService"></property>
-	</bean>
 	
+	</bean>
 	
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<tx:attributes>
