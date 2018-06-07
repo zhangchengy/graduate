@@ -1,7 +1,5 @@
 package shop.customer.service.impl;
 
-import java.util.List;
-
 import shop.customer.dao.CustomerDao;
 import shop.customer.domain.Customer;
 import shop.customer.service.CustomerService;
@@ -14,12 +12,17 @@ public class CustomerServiceImpl implements CustomerService{
 		customerDao.register(customer);
 	}
 	
-	public List<Customer> customerlogin(String userphone){
+	public Customer customerlogin(String userphone){
 		return customerDao.login(userphone);
 	}
 	
 	public void setCustomerDao(CustomerDao customerDao) {
 		this.customerDao = customerDao;
+	}
+
+	public boolean customerexist(String userphone) {
+		// TODO Auto-generated method stub
+		return customerDao.exist(userphone);
 	}
 	
 }

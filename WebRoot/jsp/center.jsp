@@ -47,11 +47,16 @@
 
 						<div class="cc2">
 
+							<!-- 个人中心-->
 							<div class="cd">
-								个人信息
+								
 							</div>
+
+							<!-- 我的收藏-->
 							<div class="cd hide">
 								我的收藏</div>
+
+							<!-- 我的预约-->
 							<div class="cd hide">
 								我的预约</div>
 

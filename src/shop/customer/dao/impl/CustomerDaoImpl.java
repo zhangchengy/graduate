@@ -14,13 +14,22 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Customer> login(String userphone){
+	public Customer login(String userphone){
 		System.out.println(userphone);
 		Customer customer=new Customer();
 		customer.setUserphone(userphone);
-		List<Customer> list=this.getHibernateTemplate().findByExample(customer, 0, 2);
-		return list;
+		List<Customer> list=this.getHibernateTemplate().findByExample(customer, 0, 1);
+		return list.get(0);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public boolean exist(String userphone){
+		Customer customer=new Customer();
+		customer.setUserphone(userphone);
+		List<Customer> list=this.getHibernateTemplate().findByExample(customer, 0, 1);
+		System.out.println(list);
+		if(!list.isEmpty()){System.out.println("eeee");return true;}
+		else {System.out.println("dddd");return false;}
+	}
 	
 }

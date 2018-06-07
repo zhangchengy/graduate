@@ -16,8 +16,8 @@ import shop.customer.service.CustomerService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class CustomerAction extends ActionSupport implements
-		SessionAware,ModelDriven<Customer> {
+public class CustomerAction extends ActionSupport implements SessionAware,
+		ModelDriven<Customer> {
 
 	private static final long serialVersionUID = 1L;
 	String msg;
@@ -25,8 +25,6 @@ public class CustomerAction extends ActionSupport implements
 	Customer customer;
 	JSONObject jsonobject = new JSONObject();
 	Map<String, Customer> session;
-	
-	
 
 	public JSONObject getJsonobject() {
 		return jsonobject;
@@ -54,15 +52,25 @@ public class CustomerAction extends ActionSupport implements
 	}
 
 	public String login() {
-
+		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String userphone = request.getParameter("userphone");
-		List<Customer> list = customerService.customerlogin(userphone);
-		msg="find successfully!";
-		jsonobject.put("msg", msg);
-		jsonobject.put("list", list);
-		session.put("user", list.get(0));
-		
+		String password = request.getParameter("password");
+		if (customerService.customerexist(userphone)) {
+			customer = customerService.customerlogin(userphone);
+			if (customer.getPassword().equals(password)) {
+				msg = "one";//核对正确
+				jsonobject.put("msg", msg);
+				jsonobject.put("customer", customer);
+				session.put("user", customer);
+			} else {
+				msg = "two";//密码错误
+				jsonobject.put("msg", msg);
+			}
+		} else {
+			msg="three";//用户名不存在
+			jsonobject.put("msg", msg);
+		}
 		return SUCCESS;
 	}
 
@@ -75,10 +83,8 @@ public class CustomerAction extends ActionSupport implements
 		}
 	}
 
-	@Override
 	public void setSession(Map session) {
-		
-		this.session=session;
+		this.session = session;
 	}
 
 }

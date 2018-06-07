@@ -15,13 +15,19 @@
 								type: "POST",
 								url: "login",
 								data: {
-									userphone: $.trim($("#userphone").val()),						
+									userphone: $.trim($("#userphone").val()),
+									password: $.trim($("#password").val()),						
 								},
 								dataType : "json",
 								success: function (data) {
-									$("#show-in").append("<br>信息："+data.msg);
-									$("#show-in").append("<br>用户名：" + data.list[0].username+"生日："+data.list[0].userbirthday);
-									location.href="jsp/index.jsp";	
+									if(data.msg=="three"){
+										alert("该用户未注册");
+									}
+									else if(data.msg=="two"){
+										alert("密码错误");
+									}
+									else {
+									location.href="jsp/index.jsp";	}
 								},
 								error: function (jqXHR) {
 									alert("发生错误：" + jqXHR.status);
@@ -86,10 +92,10 @@
 
 
 		</table>
-<div id="show-in"></div>
 
 
-<s:property value="#session.user.username" />
+
+
 	</body>
 
 	</html>
