@@ -27,7 +27,7 @@
 </nav>
 <script type="text/javascript">
 
-    
+    		
                 $(document).ready(function () {
                     
                     $.ajax({
@@ -54,7 +54,7 @@
                     if(customer==null){
                         if(location.pathname=="/dingwang/jsp/center.jsp"){ 
                             location.href="jsp/login.jsp";
-                              alert(customer); 
+                               
                         }
                     }                   
                 });

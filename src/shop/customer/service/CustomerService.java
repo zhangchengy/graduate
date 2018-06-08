@@ -6,4 +6,5 @@ public interface CustomerService {
 		public void customerregister(Customer customer);
 		public Customer customerlogin(String userphone);
 		public boolean customerexist(String userphone);
+		public void informalter(String userphone,String username,String sex,String userbirthday,String address);
 }

@@ -48,9 +48,22 @@ public class CustomerAction extends ActionSupport implements SessionAware,
 
 	public String register() {
 		customerService.customerregister(customer);
+		session.put("user", customer);
+		
 		return SUCCESS;
 	}
-
+	
+	public String informalter(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String userphone = request.getParameter("userphone");
+		String username=request.getParameter("username");
+		String address=request.getParameter("address");
+		String sex=request.getParameter("sex");
+		String userbirthday=request.getParameter("userbirthday");
+		customerService.informalter(userphone,username,sex,userbirthday,address);
+		return SUCCESS;
+	}
+	
 	public String login() {
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -59,16 +72,18 @@ public class CustomerAction extends ActionSupport implements SessionAware,
 		if (customerService.customerexist(userphone)) {
 			customer = customerService.customerlogin(userphone);
 			if (customer.getPassword().equals(password)) {
-				msg = "one";//ºË¶ÔÕıÈ·
+				msg = "one";//ç™»å½•æˆåŠŸ
 				jsonobject.put("msg", msg);
 				jsonobject.put("customer", customer);
 				session.put("user", customer);
 			} else {
-				msg = "two";//ÃÜÂë´íÎó
+				System.out.println(password);
+				System.out.println(customer.getUsername());
+				msg = "two";//å¯†ç é”™è¯¯
 				jsonobject.put("msg", msg);
 			}
 		} else {
-			msg="three";//ÓÃ»§Ãû²»´æÔÚ
+			msg="three";//ç”¨æˆ·æœªæ³¨å†Œ
 			jsonobject.put("msg", msg);
 		}
 		return SUCCESS;

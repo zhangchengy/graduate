@@ -11,7 +11,7 @@
 $(document).ready(function(){
 	$("#register_submit").click(
 			function() {
-				console.log($.trim($("#userbirthday").val()));
+				
 				$.ajax({
 					type : "POST",
 					url : "register",

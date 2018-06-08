@@ -3,7 +3,6 @@ package shop.customer.domain;
 import java.util.Date;
 
 public class Customer {
-	private int cid;
 	private String sex;
 	private String userphone;
 	private String username;
@@ -14,10 +13,9 @@ public class Customer {
 	public Customer() {
 	}
 
-	public Customer(int cid, String sex, String userphone, String username,
+	public Customer(String sex, String userphone, String username,
 			String password, String userbirthday, String address) {
 
-		this.cid = cid;
 		this.sex = sex;
 		this.userphone = userphone;
 		this.username = username;
@@ -32,14 +30,6 @@ public class Customer {
 
 	public void setSex(String sex) {
 		this.sex = sex;
-	}
-
-	public int getCid() {
-		return cid;
-	}
-
-	public void setCid(int cid) {
-		this.cid = cid;
 	}
 
 	public String getUserphone() {

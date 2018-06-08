@@ -20,6 +20,14 @@
 			
 			</result>
 		</action>
+		
+		<action name="informalter" class="customerAction" method="informalter">
+			<result type="json">
+				<param name="root">customer</param>
+			
+			</result>
+		</action>
+		
 		<action name="sessionask" class="shop.customer.action.SessionAction" method="send">
 			<result type="json">
 				<param name="root">customer</param>

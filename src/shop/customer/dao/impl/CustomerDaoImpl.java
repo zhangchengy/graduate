@@ -13,23 +13,30 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao{
 		this.getHibernateTemplate().save(customer);	
 	}
 	
-	@SuppressWarnings("unchecked")
+	
 	public Customer login(String userphone){
-		System.out.println(userphone);
-		Customer customer=new Customer();
-		customer.setUserphone(userphone);
-		List<Customer> list=this.getHibernateTemplate().findByExample(customer, 0, 1);
-		return list.get(0);
+		Customer customer=this.getHibernateTemplate().get(Customer.class,userphone);
+		System.out.println("登录时查出存在："+customer.getUsername());
+		return customer;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public boolean exist(String userphone){
-		Customer customer=new Customer();
-		customer.setUserphone(userphone);
-		List<Customer> list=this.getHibernateTemplate().findByExample(customer, 0, 1);
-		System.out.println(list);
-		if(!list.isEmpty()){System.out.println("eeee");return true;}
+	
+	
+	public boolean exist(String userphone ){
+		Customer customer=this.getHibernateTemplate().get(Customer.class,userphone);
+		//System.out.println("查出存在："+customer.getUsername());
+		if(customer!=null){System.out.println("eeee");return true;}
 		else {System.out.println("dddd");return false;}
+	}
+
+	@Override
+	public void alter(String userphone,String username,String sex,String userbirthday,String address) {
+		Customer customer=this.getHibernateTemplate().get(Customer.class, userphone);
+		customer.setUsername(username);
+		customer.setAddress(address);
+		customer.setSex(sex);
+		customer.setUserbirthday(userbirthday);
+		this.getHibernateTemplate().update(customer);
 	}
 	
 }

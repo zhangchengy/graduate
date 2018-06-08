@@ -4,12 +4,10 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
  <hibernate-mapping>
      <class name="shop.customer.domain.Customer" table="customer">
-         <id name="cid" column="cid" type="integer">
-             <generator class="native"></generator>
+         <id name="userphone" column="userphone" type="string">
+             <generator class="assigned"></generator>
          </id>
-         <property name="userphone" length="12">  
-             <column name="userphone"></column>
-         </property>
+         
          <property name="sex" length="5">  
              <column name="sex"></column>
          </property>
