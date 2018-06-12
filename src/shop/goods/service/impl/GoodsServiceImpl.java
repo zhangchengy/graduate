@@ -9,6 +9,10 @@ import shop.goods.service.GoodsService;
 public class GoodsServiceImpl implements GoodsService {
 	GoodsDao goodsDao;
 	
+	public void setGoodsDao(GoodsDao goodsDao) {
+		this.goodsDao=goodsDao;
+	}
+
 	public void addGoods(Goods goods) {
 		goodsDao.add(goods);
 	}

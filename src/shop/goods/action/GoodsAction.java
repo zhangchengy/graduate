@@ -20,7 +20,7 @@ public class GoodsAction extends ActionSupport implements
 
 	private static final long serialVersionUID = 1L;
 	Goods goods;
-	Map<String,Goods> session;
+	Map session;
 	JSONObject jsonobject = new JSONObject();
 	GoodsService goodsService;
 	String msg;
@@ -59,7 +59,30 @@ public class GoodsAction extends ActionSupport implements
 		session.put("goods", goods);
 		return SUCCESS;
 	}
-
+	
+	public String goodssearch(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String keyword=request.getParameter("search");
+		List<Goods> list=goodsService.findGoodsByVariety(keyword);
+		msg="find successfully";
+		jsonobject.put("msg", msg);
+		jsonobject.put("list", list);
+		session.put("list", jsonobject);
+		return SUCCESS;
+	}
+	
+	public String goodsdetail(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String number=request.getParameter("number");
+		Goods goods=goodsService.findGoodsByNumber(number);
+		msg="find successfully!";
+		jsonobject.put("msg", msg);
+		jsonobject.put("goods", goods);
+		session.put("goods", goods);
+		
+		return SUCCESS;
+	}
+	
 	public Goods getModel() {
 		if (goods != null) {
 			return goods;

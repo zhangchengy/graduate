@@ -1,3 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebRoot/jsp/center.jsp=UTF-8
+encoding//WebRoot/jsp/collect.jsp=UTF-8
+encoding//WebRoot/jsp/detail.jsp=UTF-8
+encoding//WebRoot/jsp/order.jsp=UTF-8
 encoding//WebRoot/jsp/register.jsp=UTF-8
+encoding//WebRoot/jsp/result.jsp=UTF-8

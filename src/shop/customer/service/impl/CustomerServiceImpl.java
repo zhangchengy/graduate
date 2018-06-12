@@ -25,7 +25,6 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.exist(userphone);
 	}
 
-	
 	public void informalter(String userphone,String username,String sex,String userbirthday,String address) {
 		customerDao.alter(userphone,username,sex,userbirthday,address);
 		

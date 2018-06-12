@@ -16,7 +16,6 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao{
 	
 	public Customer login(String userphone){
 		Customer customer=this.getHibernateTemplate().get(Customer.class,userphone);
-		System.out.println("登录时查出存在："+customer.getUsername());
 		return customer;
 	}
 	
@@ -24,9 +23,8 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao{
 	
 	public boolean exist(String userphone ){
 		Customer customer=this.getHibernateTemplate().get(Customer.class,userphone);
-		//System.out.println("查出存在："+customer.getUsername());
-		if(customer!=null){System.out.println("eeee");return true;}
-		else {System.out.println("dddd");return false;}
+		if(customer!=null){return true;}
+		else {return false;}
 	}
 
 	@Override

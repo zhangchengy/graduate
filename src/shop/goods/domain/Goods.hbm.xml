@@ -4,26 +4,32 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
  <hibernate-mapping>
      <class name="shop.goods.domain.Goods" table="goods">
-         <id name="cid" column="cid" type="integer">
-             <generator class="native"></generator>
+         <id name="number" column="number" type="string" length="20">
+             <generator class="assigned"></generator>
          </id> 
-         <property name="number" length="20" type="string">  
-             <column name="number"></column>
+         <property name="style"  length="10" type="string">
+             <column name="style"></column>
          </property>
+         <property name="brief"  length="300" type="string">
+             <column name="brief"></column>
+         </property>        
          <property name="name"  length="40" type="string">
              <column name="name"></column>
          </property>
          <property name="variety"  length="20" type="string">
              <column name="variety"></column>
          </property>
-         <property name="price"   type="float">
+         <property name="price"   type="double">
              <column name="price"></column>
          </property>
          <property name="image"   type="string" length="40">
              <column name="image"></column>
-         </property>   
-         <property name="intro" type="string" length="100">
+         </property>  
+         <property name="imagesay"   type="string" length="40">
+             <column name="imagesay"></column>
+         </property> 
+         <property name="intro" type="string" length="300">
              <column name="intro"></column>
          </property>
      </class>
- </hibernate-mapping>
+</hibernate-mapping>

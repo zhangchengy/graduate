@@ -98,28 +98,28 @@
 					<div class="dd">
 						<table align="center">
 							<tr>
-								<td>电话</td>
-								<td><input type="text" id="userphone"
+								<td class="table_label">电话</td>
+								<td class="table_content"><input type="text" id="userphone"
 									value="<s:property value="#session.user.userphone" />" disabled /></td>
 							</tr>
 							<tr>
-								<td>姓名</td>
-								<td><input type="text" id="username"
+								<td class="table_label">姓名</td>
+								<td class="table_content"><input type="text" id="username"
 									value="<s:property value="#session.user.username" />" /></td>
 							</tr>
 							<tr>
-								<td>性别</td>
-								<td>男<input type="radio" name="sex" id="man" value="man">女<input
+								<td class="table_label">性别</td>
+								<td class="table_content">男<input type="radio" name="sex" id="man" value="man">女<input
 									type="radio" name="sex" id="woman" value="woman"></td>
 							</tr>
 							<tr>
-								<td>生日</td>
-								<td><input type="date" id="userbirthday"
+								<td class="table_label">生日</td>
+								<td class="table_content"><input type="date" id="userbirthday"
 									value="<s:property value="#session.user.userbirthday" />" /></td>
 							</tr>
 							<tr>
-								<td>地址</td>
-								<td><input type="text" id="address"
+								<td class="table_label">地址</td>
+								<td class="table_content"><input type="text" id="address"
 									value="<s:property value="#session.user.address" />" /></td>
 							</tr>
 							<tr>
@@ -131,16 +131,16 @@
 					<div class="dd hide">
 						<table align="center">
 							<tr>
-								<td>原密码</td>
+								<td class="table_label">原密码</td>
 								<td><input type="password" id="password"
 									value="<s:property value="#session.user.password" />" /></td>
 							</tr>
 							<tr>
-								<td>新密码</td>
+								<td class="table_label">新密码</td>
 								<td><input type="password" id="newpassword" value="" /></td>
 							</tr>
 							<tr>
-								<td>再次输入新密码</td>
+								<td class="table_label">再次输入新密码</td>
 								<td><input type="password" id="repassword" value="" /></td>
 							</tr>
 							<tr>

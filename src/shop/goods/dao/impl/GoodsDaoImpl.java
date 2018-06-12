@@ -23,7 +23,7 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 	public Goods findbyNumber(String number) {
 		Goods goods=new Goods();
 		goods.setNumber(number);
-		List<Goods> list=this.getHibernateTemplate().findByExample(goods);
+		List<Goods> list=this.getHibernateTemplate().find("from Goods g where g.number=?", number);
 		return list.get(0);
 	}
 
@@ -37,9 +37,9 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Goods> findbyVariety(String variety) {
-		Goods goods=new Goods();
-		goods.setName(variety);
-		List<Goods> list=this.getHibernateTemplate().findByExample(goods);
+		//Goods goods=new Goods();
+		//goods.setVariety(variety);
+		List<Goods> list=this.getHibernateTemplate().find("from Goods g where g.variety=?", "卫浴");
 		return list;
 	}
 

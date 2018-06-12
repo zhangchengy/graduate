@@ -1,39 +1,55 @@
 package shop.goods.domain;
 
 public class Goods {
-	int cid;
 	private String number;
 	private String name;
 	private String variety;
-	private float price;
+	private String style;
+	private double price;
 	private String image;
+	private String brief;
 	private String intro;
-	
+	private String imagesay;
 	public Goods() {
 
-		// TODO Auto-generated constructor stub
 	}
 	
-	
-	public Goods(int cid, String number, String name, String variety,
-			float price, String image, String intro) {
+	public Goods(String style,String number, String name, String variety,
+			double price, String image,String imagesay, String intro,String brief) {
 		super();
-		this.cid = cid;
+		this.style=style;
 		this.number = number;
 		this.name = name;
+		this.brief=brief;
 		this.variety = variety;
 		this.price = price;
 		this.image = image;
+		this.imagesay=imagesay;
 		this.intro = intro;
 	}
-
-
-	public int getCid() {
-		return cid;
+	
+	public String getImagesay() {
+		return imagesay;
 	}
 
-	public void setCid(int cid) {
-		this.cid = cid;
+	public void setImagesay(String imagesay) {
+		this.imagesay = imagesay;
+	}
+
+	public String getBrief() {
+		return brief;
+	}
+
+	public void setBrief(String brief) {
+		this.brief = brief;
+	}
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
 	}
 
 	public String getNumber() {
@@ -54,10 +70,10 @@ public class Goods {
 	public void setVariety(String variety) {
 		this.variety = variety;
 	}
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public String getImage() {

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans
-	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
- 	xmlns:aop="http://www.springframework.org/schema/aop"
- 	xmlns:tx="http://www.springframework.org/schema/tx"
- 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
                      	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
                       	http://www.springframework.org/schema/tx 
                      	http://www.springframework.org/schema/tx/spring-tx.xsd 
@@ -21,11 +18,10 @@
 		<property name="user" value="${jdbc.user}"></property>
 		<property name="password" value="${jdbc.password}"></property>
 	</bean>
-	
-	
-	
-	
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource">
 		</property>
 		<property name="hibernateProperties">
@@ -39,34 +35,80 @@
 			</props>
 		</property>
 		<property name="mappingResources">
-		<list>
-		
-		<value>shop/customer/domain/Customer.hbm.xml</value>
-		<value>shop/goods/domain/Goods.hbm.xml</value>
-		</list>
+			<list>
+			    <value>shop/collect/domain/Collect.hbm.xml</value>
+				<value>shop/order/domain/Order.hbm.xml</value>
+				<value>shop/customer/domain/Customer.hbm.xml</value>
+				<value>shop/goods/domain/Goods.hbm.xml</value>
+			</list>
 		</property>
 	</bean>
 
 
 
-<bean id="customerDao" class="shop.customer.dao.impl.CustomerDaoImpl">
+	<bean id="customerDao" class="shop.customer.dao.impl.CustomerDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory">
 		</property>
 	</bean>
-	
+
 	<bean id="customerService" class="shop.customer.service.impl.CustomerServiceImpl">
 		<property name="customerDao" ref="customerDao"></property>
 	</bean>
-	
 
+	<bean id="goodsDao" class="shop.goods.dao.impl.GoodsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory">
+		</property>
+	</bean>
 
-		<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"></property>
+	<bean id="goodsService" class="shop.goods.service.impl.GoodsServiceImpl">
+		<property name="goodsDao" ref="goodsDao"></property>
+	</bean>
+
+	<bean id="orderDao" class="shop.order.dao.impl.OrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory">
+		</property>
+	</bean>
+
+	<bean id="orderService" class="shop.order.service.impl.OrderServiceImpl">
+		<property name="orderDao" ref="orderDao"></property>
 	</bean>
 	
-	<bean id="customerAction" class="shop.customer.action.CustomerAction" scope="prototype">
-	<property name="customerService" ref="customerService"></property>
+	<bean id="collectDao" class="shop.collect.dao.impl.CollectDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory">
+		</property>
+	</bean>
+
+	<bean id="collectService" class="shop.collect.service.impl.CollectServiceImpl">
+		<property name="collectDao" ref="collectDao"></property>
+	</bean>
+
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="customerAction" class="shop.customer.action.CustomerAction"
+		scope="prototype">
+		<property name="customerService" ref="customerService"></property>
+	</bean>
+
+	<bean id="goodsAction" class="shop.goods.action.GoodsAction"
+		scope="prototype">
+		<property name="goodsService" ref="goodsService"></property>
+	</bean>
 	
+	<bean id="orderAction" class="shop.order.action.OrderAction"
+		scope="prototype">
+		<property name="orderService" ref="orderService"></property>
+		<property name="goodsService" ref="goodsService"></property>
+		<property name="customerService" ref="customerService"></property>
+	</bean>
+	
+	<bean id="collectAction" class="shop.collect.action.CollectAction"
+		scope="prototype">
+		<property name="collectService" ref="collectService"></property>
+		<property name="goodsService" ref="goodsService"></property>
+		<property name="customerService" ref="customerService"></property>
 	</bean>
 	
 	<tx:advice id="txAdvice" transaction-manager="txManager">
@@ -74,9 +116,10 @@
 			<tx:method name="*save"></tx:method>
 		</tx:attributes>
 	</tx:advice>
-	
-	<aop:config> 
-		<aop:pointcut id="txPointCut" expression="execution(* shop.customer.service..*.*(..))" />
+
+	<aop:config>
+		<aop:pointcut id="txPointCut"
+			expression="execution(* shop.customer.service..*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut" />
-	</aop:config>		
+	</aop:config>
 </beans>

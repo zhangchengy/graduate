@@ -51,6 +51,8 @@
                             alert("发生错误：" + jqXHR.status);
                         }
                     });
+            
+                    
                     if(customer==null){
                         if(location.pathname=="/dingwang/jsp/center.jsp"){ 
                             location.href="jsp/login.jsp";

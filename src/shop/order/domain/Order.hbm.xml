@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+     <class name="shop.order.domain.Order" table="orders">
+         <id name="cid" column="cid" type="integer" length="20">
+             <generator class="native"></generator>
+         </id> 
+        <property name="number"  length="50" type="string">
+             <column name="number"></column>
+         </property>
+         <property name="userphone"  length="11" type="string">
+             <column name="userphone"></column>
+         </property>        
+          <property name="ordertime"  length="20" type="string">
+             <column name="ordertime"></column>
+         </property>
+     </class>
+</hibernate-mapping>
