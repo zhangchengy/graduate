@@ -23,4 +23,10 @@ public class OrderDaoImpl extends HibernateDaoSupport implements OrderDao {
 		return this.getHibernateTemplate().findByExample(order);
 	}
 
+	@Override
+	public List<Order> findAllOrder() {
+		// TODO Auto-generated method stub
+		return this.getHibernateTemplate().find("from Order");
+	}
+
 }

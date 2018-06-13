@@ -36,6 +36,7 @@
 		</property>
 		<property name="mappingResources">
 			<list>
+			    <value>shop/manager/domain/Manager.hbm.xml</value>
 			    <value>shop/collect/domain/Collect.hbm.xml</value>
 				<value>shop/order/domain/Order.hbm.xml</value>
 				<value>shop/customer/domain/Customer.hbm.xml</value>
@@ -82,6 +83,16 @@
 		<property name="collectDao" ref="collectDao"></property>
 	</bean>
 
+	<bean id="managerDao" class="shop.manager.dao.impl.ManagerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory">
+		</property>
+	</bean>
+
+	<bean id="managerService" class="shop.manager.service.impl.ManagerServiceImpl">
+		<property name="managerDao" ref="managerDao"></property>
+	</bean>
+
+
 	<bean id="txManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -109,6 +120,11 @@
 		<property name="collectService" ref="collectService"></property>
 		<property name="goodsService" ref="goodsService"></property>
 		<property name="customerService" ref="customerService"></property>
+	</bean>
+	
+	<bean id="managerAction" class="shop.manager.action.ManagerAction"
+		scope="prototype">
+		<property name="managerService" ref="managerService"></property>
 	</bean>
 	
 	<tx:advice id="txAdvice" transaction-manager="txManager">

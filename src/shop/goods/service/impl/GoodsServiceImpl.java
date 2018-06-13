@@ -33,4 +33,10 @@ public class GoodsServiceImpl implements GoodsService {
 		goodsDao.delete(number);
 	}
 
+	@Override
+	public List<Goods> findAllGoods() {
+		// TODO Auto-generated method stub
+		return goodsDao.findAllGoods();
+	}
+
 }

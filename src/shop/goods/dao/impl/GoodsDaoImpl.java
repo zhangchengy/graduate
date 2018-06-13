@@ -43,4 +43,11 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Goods> findAllGoods() {
+		// TODO Auto-generated method stub
+		return this.getHibernateTemplate().find("from Goods");
+	}
+
 }

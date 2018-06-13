@@ -24,4 +24,10 @@ public class OrderServiceImpl implements OrderService{
 		return orderDao.find(userphone);
 	}
 
+	@Override
+	public List<Order> findAllOrder() {
+		// TODO Auto-generated method stub
+		return orderDao.findAllOrder();
+	}
+
 }

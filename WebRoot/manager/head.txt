@@ -1,0 +1,47 @@
+﻿<script type="text/javascript">	
+				function logout() {
+                    if (confirm("您确定要退出账号？")) {
+                        $.ajax({
+                            type: "POST",
+                            url: "managerlogout",
+                            data: {
+                            },
+                            dataType : "json",
+                            success: function (data) {
+                                    location.href="manager/login.jsp";               
+                            },
+                            error: function (jqXHR) {
+                                alert("发生错误：" + jqXHR.status);
+                            }
+                        });
+                        
+                    }
+                }
+</script>
+<!--头部-->
+<header class="publicHeader">
+    <h1>集成吊顶后台管理系统</h1>
+
+    <div class="publicHeaderR">
+        <p><span>下午好！</span><span id="admin_name">张成扬</span> , 欢迎你！</p>
+        <a href="javascript:logout();">退出</a>
+    </div>
+</header>
+<!--时间-->
+<section class="publicTime">
+    <span id="time">2018年6月14日 11:11  星期四</span>
+</section>
+<!--主体内容-->
+<section class="publicMian">
+    <div class="left">
+        <h2 class="leftH2">功能列表</h2>
+        <nav>
+            <ul class="list">
+                <li ><a href="manager/billList.jsp">库存管理</a></li>
+                <li><a href="manager/providerList.jsp">预约管理</a></li>
+                <li><a href="manager/userList.jsp">用户管理</a></li>
+                <li><a href="manager/password.jsp">密码修改</a></li>
+                <li><a href="javascript:logout();">退出系统</a></li>
+            </ul>
+        </nav>
+    </div>

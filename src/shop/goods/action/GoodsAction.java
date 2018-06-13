@@ -9,8 +9,10 @@ import net.sf.json.JSONObject;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
+
 import shop.goods.domain.Goods;
 import shop.goods.service.GoodsService;
+import shop.manager.domain.Manager;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -57,6 +59,14 @@ public class GoodsAction extends ActionSupport implements
 		jsonobject.put("msg", msg);
 		jsonobject.put("goods", goods);
 		session.put("goods", goods);
+		return SUCCESS;
+	}
+	
+	public String findGoodsAll(){
+		List<Goods> list=goodsService.findAllGoods();
+		msg="find successfully";
+		jsonobject.put("msg",msg);
+		jsonobject.put("list",list);
 		return SUCCESS;
 	}
 	

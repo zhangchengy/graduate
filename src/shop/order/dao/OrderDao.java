@@ -8,4 +8,5 @@ import shop.order.domain.Order;
 public interface OrderDao {
 	public void save(Order order);
 	public List<Order> find(String userphone);
+	public List<Order> findAllOrder();
 }

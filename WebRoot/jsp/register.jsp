@@ -7,41 +7,49 @@
 <title>注册</title>
 
 <script type="text/javascript">
-
-$(document).ready(function(){
-	$("#register_submit").click(
+	$(document).ready(
 			function() {
-				
-				$.ajax({
-					type : "POST",
-					url : "register",
-					data : {
-						userphone: $.trim($("#userphone").val()),
-						username : $.trim($("#username").val()),
-						password : $.trim($("#password").val()),
-						sex:$('input:radio[name="sex"]:checked').val(),
-						userbirthday : $.trim($("#userbirthday").val()),
-						address:$.trim($("#address").val()),
+				$("#register_submit").click(
+						function() {
 
-					},
-					dataType : "json",
-					success : function(data) {
-						showdiv();
-						$("#show-in").append("<br>手机号：" + data.userphone);
-						$("#show-in").append("<br>姓名：" + data.username);
-						$("#show-in").append("<br>密码：" + data.password);
-						$("#show-in").append(
-								"<br>生日：" + data.userbirthday.substring(0, 10));
-						$("#show-in").append("<br>地址：" + data.address);
-						$("#show-in").append("<br>性别：" + data.sex);
+							$.ajax({
+								type : "POST",
+								url : "register",
+								data : {
+									userphone : $.trim($("#userphone").val()),
+									username : $.trim($("#username").val()),
+									password : $.trim($("#password").val()),
+									sex : $('input:radio[name="sex"]:checked')
+											.val(),
+									userbirthday : $.trim($("#userbirthday")
+											.val()),
+									address : $.trim($("#address").val()),
 
-					},
-					error : function(jqXHR) {
-						alert("发生错误：" + jqXHR.status);
-					}
-				});
+								},
+								dataType : "json",
+								success : function(data) {
+									showdiv();
+									$("#show-in").append(
+											"<br>手机号：" + data.userphone);
+									$("#show-in").append(
+											"<br>姓名：" + data.username);
+									$("#show-in").append(
+											"<br>密码：" + data.password);
+									$("#show-in").append(
+											"<br>生日："
+													+ data.userbirthday
+															.substring(0, 10));
+									$("#show-in").append(
+											"<br>地址：" + data.address);
+									$("#show-in").append("<br>性别：" + data.sex);
+
+								},
+								error : function(jqXHR) {
+									alert("发生错误：" + jqXHR.status);
+								}
+							});
+						});
 			});
-});
 </script>
 <script type="text/javascript">
 	$(function() {
@@ -75,7 +83,7 @@ $(document).ready(function(){
 	function showdiv() {
 		document.getElementById("bg").style.display = "block";
 		document.getElementById("myModel").style.display = "block";
-		countDown(3,'jsp/index.jsp');
+		countDown(3, 'jsp/index.jsp');
 	}
 	function hidediv() {
 		document.getElementById("bg").style.display = 'none';
@@ -96,13 +104,11 @@ $(document).ready(function(){
 	opacity: 0.7;
 	filter: alpha(opacity = 70);
 }
-
-
 </style>
 </head>
 
 <body>
-		
+
 	<div class="ai">
 		<a href="jsp/index.jsp"> <img src="images/logo.jpg" class="aj" />
 		</a>
@@ -127,101 +133,96 @@ $(document).ready(function(){
 		<div class="am">
 			<div class="an">新用户注册</div>
 			<div class="ao">
-				
-					<table width="90%">
-						<tr>
-							<td class="ap">手机号</td>
-							<td><input type="text" size="40" placeholder="手机号"
-								class="aq" id="userphone" name="userphone"> <span
-								id="queuser"></span></td>
-						</tr>
-						<tr>
-							<td colspan="2" id="nameme"></td>
-						</tr>
-						
-						<tr>
-							<td class="ap">用户名</td>
-							<td><input type="text" size="40" placeholder="用户名"
-								class="aq" id="username" name="username"> <span
-								id="queuser"></span></td>
-						</tr>
-						<tr>
-							<td colspan="2" id="nameme"></td>
-						</tr>
-						
-						<tr>
-							<td class="ap">登陆密码</td>
-							<td><input type="password" size="40" placeholder="密码"
-								class="aq" id="password" name="password"> <span
-								id="mi"></span></td>
-						</tr>
-						<tr>
-							<td colspan="2" id="passwordme"></td>
-						</tr>
-						<tr>
-							<td class="ap">确认密码</td>
-							<td><input type="password" id="repassword" size="40"
-								placeholder="再次输入密码" class="aq" name="repassword"> <span
-								id="quemi"></span></td>
-						</tr>
 
-						<tr>
-							<td class="ap">性别</td>
-							<td><label class="aq1">男</label> <input type="radio"
-								value="man" id="sex" name="sex" class="au" checked />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<label class="aq1">女</label> <input type="radio" value="woman"
-								id="sex" name="sex" class="au" /></td>
-						</tr>
-						<tr>
-							<td class="ap">生日</td>
-							<td><input type="date" size="40" class="aq" id="userbirthday"
-								name="userbirthady"></td>
-						</tr>
+				<table width="90%">
+					<tr>
+						<td class="ap">手机号</td>
+						<td><input type="text" size="40" placeholder="手机号" class="aq"
+							id="userphone" name="userphone"> <span id="queuser"></span></td>
+					</tr>
+					<tr>
+						<td colspan="2" id="nameme"></td>
+					</tr>
 
-						<tr>
-							<td class="ap">收货地址</td>
-							<td><input type="text" size="80" placeholder="收货地址"
-								class="aq" id="address" name="address"></td>
-						</tr>
-						<tr>
-							<td colspan="2">&nbsp;</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center"><button  id="register_submit"
-								 class="ar" data-toggle="modal" data-target="#myModel">立即注册</button></td>
-						</tr>
-					</table>
-				
+					<tr>
+						<td class="ap">用户名</td>
+						<td><input type="text" size="40" placeholder="用户名" class="aq"
+							id="username" name="username"> <span id="queuser"></span></td>
+					</tr>
+					<tr>
+						<td colspan="2" id="nameme"></td>
+					</tr>
+
+					<tr>
+						<td class="ap">登陆密码</td>
+						<td><input type="password" size="40" placeholder="密码"
+							class="aq" id="password" name="password"> <span id="mi"></span></td>
+					</tr>
+					<tr>
+						<td colspan="2" id="passwordme"></td>
+					</tr>
+					<tr>
+						<td class="ap">确认密码</td>
+						<td><input type="password" id="repassword" size="40"
+							placeholder="再次输入密码" class="aq" name="repassword"> <span
+							id="quemi"></span></td>
+					</tr>
+
+					<tr>
+						<td class="ap">性别</td>
+						<td><label class="aq1">男</label> <input type="radio"
+							value="man" id="sex" name="sex" class="au" checked />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label class="aq1">女</label> <input type="radio" value="woman"
+							id="sex" name="sex" class="au" /></td>
+					</tr>
+					<tr>
+						<td class="ap">生日</td>
+						<td><input type="date" size="40" class="aq" id="userbirthday"
+							name="userbirthady"></td>
+					</tr>
+
+					<tr>
+						<td class="ap">收货地址</td>
+						<td><input type="text" size="80" placeholder="收货地址"
+							class="aq" id="address" name="address"></td>
+					</tr>
+					<tr>
+						<td colspan="2">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><button id="register_submit"
+								class="ar" data-toggle="modal" data-target="#myModel">立即注册</button></td>
+					</tr>
+				</table>
+
 			</div>
 		</div>
 	</div>
 	<div id="bg"></div>
 	<div class="modal fade" id="myModel">
 		<div class="modal-dialog">
-		  <div class="modal-content">
-	   
-			<!-- 模态框头部 -->
-			<div class="modal-header">
-			  <h4 class="modal-title">注册成功！</h4>
-			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			<div class="modal-content">
+
+				<!-- 模态框头部 -->
+				<div class="modal-header">
+					<h4 class="modal-title">注册成功！</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- 模态框主体 -->
+				<div class="modal-body" id="show-in"></div>
+
+				<!-- 模态框底部 -->
+				<div class="modal-footer">
+					<a href="index.jsp"> <span id="jumpTo">3</span>秒后系统会自动跳转，也可点击本处直接跳
+					</a>
+
+				</div>
+
 			</div>
-	   
-			<!-- 模态框主体 -->
-			<div class="modal-body" id="show-in">
-			  
-			</div>
-	   
-			<!-- 模态框底部 -->
-			<div class="modal-footer">
-					<a href="index.jsp">
-							<span id="jumpTo">3</span>秒后系统会自动跳转，也可点击本处直接跳</a>
-			  
-			</div>
-	   
-		  </div>
 		</div>
-	  </div>
-	
+	</div>
+
 </body>
 
 </html>

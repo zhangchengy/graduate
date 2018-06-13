@@ -74,6 +74,19 @@
 			</result>
 		</action>
 		
+		<action name="findgoodsall" class="shop.goods.action.GoodsAction"
+			method="findGoodsAll">
+			<result type="json">
+				<param name="root">jsonobject</param>
+			</result>
+		</action>
+		
+		<action name="findorderall" class="shop.order.action.OrderAction"
+			method="findAllOrder">
+			<result type="json">
+				<param name="root">jsonobject</param>
+			</result>
+		</action>
 		
 		<action name="savetocollect" class="shop.collect.action.CollectAction"
 			method="savecollect">
@@ -103,7 +116,46 @@
 
 			</result>
 		</action>
+		
+		<action name="managerlogout" class="shop.manager.action.SessionAction"
+			method="logout">
+			<result type="json" name="success">
+				<param name="contentType">text/html</param>
+
+			</result>
+		</action>
+
+		<action name="loginmanager" class="managerAction" method="login">
+			<result type="json">
+				<param name="root">jsonobject</param>
+
+			</result>
+		</action>
+		
+		<action name="findallmanager" class="managerAction" method="findAllManager">
+			<result type="json">
+				<param name="root">jsonobject</param>
+
+			</result>
+		</action>
+		
+		<action name="passwordalter" class="managerAction" method="passalter">
+			<result type="json">
+				<param name="root">jsonobject</param>
+
+			</result>
+		</action>
+
+
+
+
+
 	</package>
+
+
+
+
+
 
 	<package name="struts2" extends="json-default">
 		<action name="fileUploadAction" class="com.ajaxfile.action.FileAction">

@@ -22,6 +22,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class OrderAction extends ActionSupport implements SessionAware{
 	Map session;
+	String msg;
 	OrderService orderService;
 	GoodsService goodsService;
 	CustomerService customerService;
@@ -59,6 +60,29 @@ public class OrderAction extends ActionSupport implements SessionAware{
         order.setOrdertime(ordertime);
         orderService.saveOrder(order);
         return SUCCESS;
+	}
+	
+	public String findAllOrder(){
+		List<Order> list=orderService.findAllOrder();		
+		ArrayList<String[]> arrayList=new ArrayList<String[]>();
+		for(int i=0;i<list.size();i++)
+		{
+			String[] order=new String[6];
+			order[0]=list.get(i).getUserphone();
+			Customer customer=customerService.customerlogin(list.get(i).getUserphone());
+			order[1]=customer.getUsername();
+			order[5]=customer.getAddress();
+			
+			order[2]=list.get(i).getNumber();
+			Goods goods=goodsService.findGoodsByNumber(list.get(i).getNumber());
+			order[3]=goods.getName();
+			order[4]=list.get(i).getOrdertime();
+			arrayList.add(order);
+		}
+		msg="find successfully";
+		jsonobject.put("msg",msg);
+		jsonobject.put("list",arrayList);
+		return SUCCESS;
 	}
 	
 	public String findorder(){

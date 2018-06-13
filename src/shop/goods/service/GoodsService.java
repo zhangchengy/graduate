@@ -10,4 +10,5 @@ public interface GoodsService {
 	public List<Goods> findGoodsByName(String name);
 	public Goods findGoodsByNumber(String number);
 	public List<Goods> findGoodsByVariety(String variety);
+	public List<Goods> findAllGoods();
 }

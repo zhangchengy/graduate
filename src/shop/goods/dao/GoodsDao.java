@@ -10,5 +10,5 @@ public interface GoodsDao {
 	public Goods findbyNumber(String number);
 	public List<Goods> findbyName(String name);
 	public List<Goods> findbyVariety(String variety);
-	
+	public List<Goods> findAllGoods();
 }
