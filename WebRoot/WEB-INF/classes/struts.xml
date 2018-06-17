@@ -146,7 +146,12 @@
 			</result>
 		</action>
 
+		<action name="isexistphone" class="customerAction" method="existphone">
+			<result type="json">
+				<param name="root">jsonobject</param>
 
+			</result>
+		</action>
 
 
 

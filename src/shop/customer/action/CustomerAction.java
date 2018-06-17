@@ -53,6 +53,14 @@ public class CustomerAction extends ActionSupport implements SessionAware,
 		return SUCCESS;
 	}
 	
+	public String existphone(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String userphone=request.getParameter("userphone");
+		boolean bool=customerService.customerexist(userphone);
+		jsonobject.put("msg", bool);
+		return SUCCESS;
+	}
+	
 	public String informalter(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String userphone = request.getParameter("userphone");
@@ -64,8 +72,7 @@ public class CustomerAction extends ActionSupport implements SessionAware,
 		return SUCCESS;
 	}
 	
-	public String login() {
-		
+	public String login() {	
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String userphone = request.getParameter("userphone");
 		String password = request.getParameter("password");

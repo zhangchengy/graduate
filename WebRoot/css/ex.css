@@ -3,7 +3,7 @@
 }
 
 .aa {
-    background-color: rgb(202, 202, 202);
+    background-color: #DeDeDe;
     height: 25px;
     padding-bottom: 3px;
     padding-top: 0px;
@@ -583,4 +583,174 @@ button:hover{
 }
 .hot_goods1{
 	background:green;
+}
+.login1_logo{
+    width:67%;
+    height:120px;
+    margin:0 auto;
+    
+}
+.login1_logo_img{
+    margin-left:40px;
+    margin-top:20px;
+
+}
+.login1_logo_text{
+    float:right;
+    font-family:"微软雅黑";
+    font-size:32px;
+    margin-top:40px;
+    margin-right:40px;
+}
+.login1_center{
+    width:100%;
+    height:720px;
+    background-image: url(../images/login_bg.jpg);
+    background-repeat:no-repeat;
+}
+.login1_div{
+    width:67%;
+    height:100%;
+    margin:0 auto;
+}
+.login1_center_img{
+    width:800px;
+    height:500px;
+    margin-top:60px;
+    opacity:0.95;
+}
+.login1_center_div{
+    width:400px;
+    height:500px;
+   
+    margin-top:90px;
+    float:right;
+}
+.login1_table{
+    width:100%;
+    height:75%;
+    background-color:white;
+    opacity:0.95;
+}
+
+.login1_table_td1{
+    padding-left:20px;
+    color:black;
+    font-family: "微软雅黑";
+    font-size:22px;
+}
+#login_userphone,#login_password{
+    width:220px;
+    height:50px;
+    border-left:none;
+    margin-top:5px;
+    border-top:2px solid #E5E5E5;
+}
+.login1_input_img{
+    margin-top:5px;
+    float:left;
+    margin-left:20px;
+}
+
+#login_submit{
+    width:220px;
+    height:50px;
+    background:black;
+    font-size:24px;
+    color:white;
+    border:none;
+    margin-left:20px;
+}
+.login1_register{
+    font-size:22px;
+    margin-top:50px;
+    margin-left:50px;
+    
+}
+.inin{   
+    width:67%;   
+    height:20px;
+    margin:0 auto;   
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#A9A9A9,endColorStr=#ffffff); /*IE*/   
+    background:-moz-linear-gradient(top,#A9A9A9,#ffffff);/*火狐*/   
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#A9A9A9), to(#ffffff));/*谷歌*/   
+  
+      
+    background-image: -webkit-gradient(linear,left bottom,left top,color-start(0, #A9A9A9),color-stop(1, #ffffff));/* Safari & Chrome*/  
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#A9A9A9', endColorstr='#ffffff'); /*IE6 & IE7*/  
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#A9A9A9', endColorstr='#ffffff')"; /* IE8 */  
+}
+.register_logo{
+    width:67%;
+    height:110px;
+    margin:0 auto;
+    
+}
+.register_logo_img{
+    float:left;
+    margin-top:20px;
+    border-right:2px solid #A9A9A9;
+    padding-right:10px;
+}
+.register_logo_text{
+    margin-top:60px;
+    font-size:28px;
+    font-family:"微软雅黑";
+    color:black;
+    margin-left:20px;
+}
+.register_div{
+    width:67%;
+    height:640px;
+    margin:0 auto;
+    margin-top:40px;
+    border:1px solid black;
+}
+.register_table{
+    width:70%;
+    height:100%;
+    margin:0 auto;
+    
+}
+.register_table td:nth-of-type(odd){ 
+    text-align: right;
+    width:40%;
+    font-size:18px;
+    font-family:"微软雅黑";
+}
+.register_phone,.register_name,.register_password,.register_birthday,.register_address{
+    width:250px;
+    height:40px;
+    border:1px solid black;
+    font-size:18px;
+    font-family:"微软雅黑";
+}
+
+.register_sex{
+    font-size:18px;
+    font-family:"微软雅黑";
+    margin-left:20px;
+    margin-top:5px;
+}
+#register_sex{
+    margin-top:5px;
+}
+.register_submit{
+    width:180px;
+    height:40px;
+    float:left;
+    margin-left:360px;
+    border:none;
+    background:black;
+    color:white;
+    font-size:24px;
+    font-family:"微软雅黑";
+}
+.register_submit:hover{
+    background:#303030;
+}
+input{outline:none;}
+.isexist_img{
+    width:40px;
+    height:40px;
 }

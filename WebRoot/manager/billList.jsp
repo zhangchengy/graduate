@@ -36,7 +36,7 @@
             </div>
             <div class="search">
                 <span>产品名称：</span>
-                <input type="text" placeholder="请输入商品的名称"/>
+                <input type="text" placeholder="请输入产品的名称"/>
                 
                 <span>种类：</span>
                 <select name="tigong" >

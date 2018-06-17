@@ -40,12 +40,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 success: function (data, status)  //服务器成功响应处理函数
                 {
      		        $("#show_d").append("<img src='upload/"+data.fileFileName+"' width='250' height='250' />");
-                    alert(data.message);                  
+                    alert(data.fileFileName);                  
                     if(typeof(data.error) != 'undefined')
                     {
                         if(data.error != '')
                         {
-                            alert(data.error);
+                            alert(data.fileFileName);
                         }else
                         {
                             alert(data.message);

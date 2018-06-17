@@ -133,7 +133,7 @@
 							<tr>
 								<td class="table_label">原密码</td>
 								<td><input type="password" id="password"
-									value="<s:property value="#session.user.password" />" /></td>
+									value="" /></td>
 							</tr>
 							<tr>
 								<td class="table_label">新密码</td>

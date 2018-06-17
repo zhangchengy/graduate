@@ -80,7 +80,7 @@
 				<!-- 模态框主体 -->
 				<div class="modal-body" id="show-in"></div>
 					<table class="altermanager">
-						<tr><td class="textalter">手机号</td><td><input type="text" id="phone" value="" disabled /></td></tr>
+						<tr><td class="textalter">手机号</td><td><input type="text" id="phone" value="18713588381" disabled /></td></tr>
 						<tr><td class="textalter">姓名</td><td><input type="text" id="name" value="" /></td></tr>
 						<tr><td class="textalter">性别</td><td>男<input type="radio"  value="man" name="sex" />女<input type="radio"  value="man" name="sex" /></td></tr>
 						<tr><td class="textalter">生日</td><td><input type="text" id="birthday" value="" /></td></tr>
