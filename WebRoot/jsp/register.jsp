@@ -8,19 +8,24 @@
 
 			<script type="text/javascript">
 				function isexist() {
-					if ($("#register_phone").val() != "") {
-						var phone = $("#register_phone").val();
+					var phone = $("#register_phone").val();
+					if (phone!= "") {
 						var pattern = /^1[34578]\d{9}$/;
-						if (pattern.test(phone)) {
+						if (pattern.test(phone) == true) {
 							$.ajax({
 								type: "POST",
 								url: "isexistphone",
+								async:false, 
 								data: {
 									userphone: $.trim($("#register_phone").val()),
 								},
 								dataType: "json",
 								success: function (data) {
+
 									if (data.msg == false) {
+										phoneok=true;
+										$("#register_submit").attr("data-toggle","modal");
+										$("#register_submit").attr("data-target","#myModel");										
 										$("img").remove(".isexist_img");
 										$("label").remove("#isexist");
 										$("#register_is").append("<img src='images/yes.jpg' class='isexist_img'>");
@@ -37,77 +42,116 @@
 									alert("发生错误：" + jqXHR.status);
 								}
 							});
-						} else {
-							$("#register_is").append("<label id='isexist' style='color:#CD2626'>该手机号不存在，请输入正确手机格式！</label>");
+						}
+						else {
+							$("img").remove(".isexist_img");
+							$("label").remove("#isexist");
+							$("#register_is").append("<img src='images/no.jpg' class='isexist_img'>");
+							$("#register_is").append("<label id='isexist' style='color:#CD2626'>请输入正确的手机格式！</label>");
 						}
 					}
+				}
 
-					$(document).ready(function () {
-						$("#register_submit").click(
-							function () {
+				function name_isblank(){
+					var name=$("#register_name").val();
+					if(name==""){
+				
+						$("#name_isblank").html("*姓名不能为空");
+					}else{
+						$("#name_isblank").html("");
+						nameok=true;
+					}
+				}
+				
+				function check_pass(){
+					var pass=$("#register_password").val();
+					if(pass.length<5){
+					
+						$("#check_pass").html("*密码不能少于5位");						
+					}
+					else{
+						passok=true;
+						$("#check_pass").html("");
+					}
+				}
+				
+				function check_repass(){
+					if($("#register_password").val()!=$("#register_repassword").val()){					
+						$("#check_repass").html("*两次秘密输入不一致");						
+					}
+					else{
+						repassok=true;
+					}
+				}
 
-								$.ajax({
-									type: "POST",
-									url: "register",
-									data: {
-										userphone: $.trim($("#register_phone").val()),
-										username: $.trim($("#register_name").val()),
-										password: $.trim($("#register_password").val()),
-										sex: $('input:radio[name="sex"]:checked')
-											.val(),
-										userbirthday: $.trim($("#register_birthday")
-											.val()),
-										address: $.trim($("#register_address").val()),
+				$(document).ready(function () {
+					$("#register_submit").click(
+						function () {
+							if(phoneok==true&&nameok==true&&passok==true&&repassok==true){
+							$.ajax({
+								type: "POST",
+								url: "register",
+								data: {
+									userphone: $.trim($("#register_phone").val()),
+									username: $.trim($("#register_name").val()),
+									password: $.trim($("#register_password").val()),
+									sex: $('input:radio[name="sex"]:checked')
+										.val(),
+									userbirthday: $.trim($("#register_birthday")
+										.val()),
+									address: $.trim($("#register_address").val()),
 
-									},
-									dataType: "json",
-									success: function (data) {
-										showdiv();
-										$("#show-in").append(
-											"<br>手机号：" + data.userphone);
-										$("#show-in").append(
-											"<br>姓名：" + data.username);
-										$("#show-in").append(
-											"<br>密码：" + data.password);
-										$("#show-in").append(
-											"<br>生日："
-											+ data.userbirthday
-												.substring(0, 10));
-										$("#show-in").append(
-											"<br>地址：" + data.address);
-										$("#show-in").append("<br>性别：" + data.sex);
+								},
+								dataType: "json",
+								success: function (data) {
+									showdiv();
+									$("#show-in").append(
+										"<br>手机号：" + data.userphone);
+									$("#show-in").append(
+										"<br>姓名：" + data.username);
+									$("#show-in").append(
+										"<br>密码：" + data.password);
+									$("#show-in").append(
+										"<br>生日："
+										+ data.userbirthday
+											.substring(0, 10));
+									$("#show-in").append(
+										"<br>地址：" + data.address);
+									$("#show-in").append("<br>性别：" + data.sex);
 
-									},
-									error: function (jqXHR) {
-										alert("发生错误：" + jqXHR.status);
-									}
-								});
+								},
+								error: function (jqXHR) {
+									alert("发生错误：" + jqXHR.status);
+								}
 							});
-					});
+							}
+						});
+						
+				});
 			</script>
 
 			<script type="text/javascript">
-					function countDown(secs, surl) {
-						var jumpTo = document.getElementById('jumpTo');
-						jumpTo.innerHTML = secs;
-						if (--secs > 0) {
-							setTimeout("countDown(" + secs + ",'" + surl + "')", 1000);
-						} else {
-							location.href = surl;
-							-ma
-						}
+				function countDown(secs, surl) {
+					var jumpTo = document.getElementById('jumpTo');
+					jumpTo.innerHTML = secs;
+					if (--secs > 0) {
+						setTimeout("countDown(" + secs + ",'" + surl + "')", 1000);
+					} else {
+						location.href = surl;
+						-ma
 					}
+				}
 			</script>
 			<script language="javascript" type="text/javascript">
-					function showdiv() {
-						document.getElementById("bg").style.display = "block";
-						document.getElementById("myModel").style.display = "block";
-						countDown(3, 'jsp/index.jsp');
-					}
-					function hidediv() {
-						document.getElementById("bg").style.display = 'none';
-						document.getElementById("myModel").style.display = 'none';
-					}
+				function showdiv() {
+					document.getElementById("bg").style.display = "block";
+					document.getElementById("myModel").style.display = "block";
+					countDown(3, 'jsp/index.jsp');
+				}
+				function hidediv() {
+					document.getElementById("bg").style.display = 'none';
+					document.getElementById("myModel").style.display = 'none';
+				}
 			</script>
 			<style type="text/css">
 				#bg {
@@ -146,19 +190,21 @@
 					<tr>
 						<td>用户名：</td>
 						<td>
-							<input type="text" id="register_name" class="register_name" placeholder="输入用户名">
+							<input type="text" onblur="name_isblank();" id="register_name" class="register_name" placeholder="输入用户名"><label style='color:#CD2626' id='name_isblank'></label>
 						</td>
 					</tr>
 					<tr>
 						<td>登录密码：</td>
 						<td>
-							<input type="password" id="register_password" class="register_password" placeholder="输入密码">
+							<input type="password" onblur="check_pass();" id="register_password" class="register_password" placeholder="输入密码">
+							<label id="check_pass" style='color:#CD2626'></label>
 						</td>
 					</tr>
 					<tr>
 						<td>确定密码：</td>
 						<td>
-							<input type="password" id="register_repassword" class="register_password" placeholder="再次输入密码">
+							<input type="password" onblur="check_repass();" id="register_repassword" class="register_password" placeholder="再次输入密码">
+							<label id="check_repass" style='color:#CD2626'></label>
 						</td>
 					</tr>
 					<tr>
@@ -184,7 +230,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<button class="register_submit" id="register_submit" data-toggle="modal" data-target="#myModel">注册</button>
+							<button class="register_submit" id="register_submit" >注册</button>
 						</td>
 					</tr>
 				</table>
