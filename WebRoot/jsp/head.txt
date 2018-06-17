@@ -25,11 +25,8 @@
         </ul>
     </div>
 </nav>
-<script type="text/javascript">
-
-    		
-                $(document).ready(function () {
-                    
+<script type="text/javascript">  		
+                $(document).ready(function () {                   
                     $.ajax({
                         type: "POST",
                         url: "sessionask",
@@ -45,19 +42,15 @@
                             }
                             else{
                                 customer=null;
-                            }
-                            
+                            }                           
                         },
                         error: function (jqXHR) {
                             alert("发生错误：" + jqXHR.status);
                         }
-                    });
-            
-                    
+                    });                             
                     if(customer==null){
-                        if(location.pathname=="/dingwang/jsp/center.jsp"){ 
-                            location.href="jsp/login.jsp";
-                               
+                        if(location.pathname=="/dingwang/jsp/center.jsp"||location.pathname=="/dingwang/jsp/collect.jsp"||location.pathname=="/dingwang/jsp/order.jsp"){ 
+                            location.href="jsp/login.jsp";                             
                         }
                     }                   
                 });

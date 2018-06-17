@@ -24,4 +24,10 @@ public class CollectServiceImpl implements CollectService {
 		return collectDao.find(userphone);
 	}
 
+	@Override
+	public boolean existCollect(String number, String userphone) {
+		
+		return collectDao.exist(number, userphone);
+	}
+
 }

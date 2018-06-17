@@ -7,24 +7,40 @@
 <script type="text/javascript">
 
 $(document).ready(function () {
-					$("#search_submit").click(
-						function () {
+	$("#search").keyup(
+		function(envent){
+			if(event.keyCode ==13){
 				$.ajax({
 					type : "POST",
 					url : "goodsfind",
 					data : {
 						search: $.trim($("#search").val()),
-
-					},
-					
+					},					
 					success : function(data) {
 						location.href="jsp/result.jsp";
-
 					},
 					error : function(jqXHR) {
 						alert("发生错误：" + jqXHR.status);
 					}
 				});
+			}
+	});
+
+	$("#search_submit").click(
+		function () {
+			$.ajax({
+				type : "POST",
+				url : "goodsfind",
+				data : {
+					search: $.trim($("#search").val()),
+				},					
+				success : function(data) {
+					location.href="jsp/result.jsp";
+				},
+				error : function(jqXHR) {
+					alert("发生错误：" + jqXHR.status);
+				}
 			});
+	});
 });
 </script>

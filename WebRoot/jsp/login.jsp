@@ -28,21 +28,21 @@ function resetcolor(){
 }
 
 function altercolor1(){
-    $("#login_userpassword").css("border-top","2px solid #87CEFF");
-    $("#login_userpassword").css("border-right","2px solid #87CEFF");
-    $("#login_userpassword").css("border-bottom","2px solid #87CEFF");
-    $("#login_userpassword").css("border-left","none");
-    $("#login_userpassword").css("height","54px");
+    $("#login_password").css("border-top","2px solid #87CEFF");
+    $("#login_password").css("border-right","2px solid #87CEFF");
+    $("#login_password").css("border-bottom","2px solid #87CEFF");
+    $("#login_password").css("border-left","none");
+    $("#login_password").css("height","54px");
     $("#userpassword_img").css("border-top","2px solid #87CEFF");
     $("#userpassword_img").css("border-bottom","2px solid #87CEFF");
     $("#userpassword_img").css("border-left","2px solid #87CEFF");
 }
 function resetcolor1(){
-    $("#login_userpassword").css("border-top","");
-    $("#login_userpassword").css("border-right","");
-    $("#login_userpassword").css("border-bottom","");
-    $("#login_userpassword").css("border-left","none");
-    $("#login_userpassword").css("height","50px");
+    $("#login_password").css("border-top","");
+    $("#login_password").css("border-right","");
+    $("#login_password").css("border-bottom","");
+    $("#login_password").css("border-left","none");
+    $("#login_password").css("height","50px");
     $("#userpassword_img").css("border-bottom","");
     $("#userpassword_img").css("border-left","");
     $("#userpassword_img").css("border-top","");

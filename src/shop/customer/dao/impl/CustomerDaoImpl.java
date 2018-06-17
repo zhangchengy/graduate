@@ -1,6 +1,5 @@
 package shop.customer.dao.impl;
 
-import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 

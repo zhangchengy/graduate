@@ -91,7 +91,14 @@
 		<action name="savetocollect" class="shop.collect.action.CollectAction"
 			method="savecollect">
 			<result type="json">
-				<param name="root"></param>
+				<param name="root">jsonobject</param>
+			</result>
+		</action>
+		
+		<action name="resultsavetocollect" class="shop.collect.action.CollectAction"
+			method="resultsavecollect">
+			<result type="json">
+				<param name="root">jsonobject</param>
 			</result>
 		</action>
 		

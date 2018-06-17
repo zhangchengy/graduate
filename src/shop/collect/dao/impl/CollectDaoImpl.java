@@ -16,11 +16,21 @@ public class CollectDaoImpl extends HibernateDaoSupport implements CollectDao {
 		this.getHibernateTemplate().save(collect);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Collect> find(String userphone) {
 		Collect collect=new Collect();
 		collect.setUserphone(userphone);
 		return this.getHibernateTemplate().findByExample(collect);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean exist(String number, String userphone) {
+		
+		List<Collect> list= this.getHibernateTemplate().find("from Collect c where c.number=? and c.userphone=?",new String[]{number,userphone});
+		if(list.size()==0) return true;
+		else return false;
 	}
 
 }

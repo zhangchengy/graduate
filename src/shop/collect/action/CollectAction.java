@@ -1,13 +1,14 @@
 package shop.collect.action;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import net.sf.json.JSONObject;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import shop.customer.domain.Customer;
@@ -49,11 +50,34 @@ public class CollectAction extends ActionSupport implements SessionAware{
 	public String savecollect(){
 		Customer customer=(Customer)this.session.get("user");
 		Goods goods=(Goods)this.session.get("goods");
-		Collect collect=new Collect();
-		collect.setNumber(goods.getNumber());
-		collect.setUserphone(customer.getUserphone());
-        collectService.saveCollect(collect);
-        return SUCCESS;
+		if(collectService.existCollect(goods.getNumber(), customer.getUserphone())){
+			Collect collect=new Collect();
+			collect.setNumber(goods.getNumber());
+			collect.setUserphone(customer.getUserphone());
+	        collectService.saveCollect(collect);
+	        jsonobject.put("msg", "ok");
+		}
+		else{
+			jsonobject.put("msg", "no");
+		}
+		return SUCCESS;
+	}
+	
+	public String resultsavecollect(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String number=request.getParameter("number");
+		Customer customer=(Customer)this.session.get("user");
+		if(collectService.existCollect(number, customer.getUserphone())){
+			Collect collect=new Collect();
+			collect.setNumber(number);
+			collect.setUserphone(customer.getUserphone());
+	        collectService.saveCollect(collect);
+	        jsonobject.put("msg", "ok");
+		}
+		else{
+			jsonobject.put("msg", "no");
+		}
+		return SUCCESS;
 	}
 	
 	public String findcollect(){
