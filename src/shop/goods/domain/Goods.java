@@ -10,12 +10,13 @@ public class Goods {
 	private String brief;
 	private String intro;
 	private String imagesay;
+	private int status;
 	public Goods() {
 
 	}
 	
 	public Goods(String style,String number, String name, String variety,
-			double price, String image,String imagesay, String intro,String brief) {
+			double price, String image,String imagesay, String intro,String brief,int status) {
 		super();
 		this.style=style;
 		this.number = number;
@@ -26,8 +27,17 @@ public class Goods {
 		this.image = image;
 		this.imagesay=imagesay;
 		this.intro = intro;
+		this.status=status;
 	}
-	
+		
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public String getImagesay() {
 		return imagesay;
 	}

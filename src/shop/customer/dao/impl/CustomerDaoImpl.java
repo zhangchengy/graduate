@@ -35,5 +35,14 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao{
 		customer.setUserbirthday(userbirthday);
 		this.getHibernateTemplate().update(customer);
 	}
+
+
+	@Override
+	public void alterpassword(String userphone, String newpassword) {
+		// TODO Auto-generated method stub
+		Customer customer=this.getHibernateTemplate().get(Customer.class, userphone);
+		customer.setPassword(newpassword);
+		this.getHibernateTemplate().update(customer);
+	}
 	
 }

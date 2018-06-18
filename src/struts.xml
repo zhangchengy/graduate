@@ -67,7 +67,7 @@
 			</result>
 		</action>
 		
-		<action name="findgoodslist" class="shop.order.action.OrderAction"
+		<action name="findorderlist" class="shop.order.action.OrderAction"
 			method="findorder">
 			<result type="json">
 				<param name="root">jsonobject</param>
@@ -97,6 +97,20 @@
 		
 		<action name="resultsavetocollect" class="shop.collect.action.CollectAction"
 			method="resultsavecollect">
+			<result type="json">
+				<param name="root">jsonobject</param>
+			</result>
+		</action>
+		
+		<action name="deletefromcollect" class="shop.collect.action.CollectAction"
+			method="deletecollect">
+			<result type="json">
+				<param name="root">jsonobject</param>
+			</result>
+		</action>
+		
+		<action name="deletefromorder" class="shop.order.action.OrderAction"
+			method="deleteorder">
 			<result type="json">
 				<param name="root">jsonobject</param>
 			</result>
@@ -152,7 +166,15 @@
 
 			</result>
 		</action>
+		
+		<action name="userpasswordalter" class="customerAction" method="userpassalter">
+			<result type="json">
+				<param name="root">jsonobject</param>
 
+			</result>
+		</action>
+		
+		
 		<action name="isexistphone" class="customerAction" method="existphone">
 			<result type="json">
 				<param name="root">jsonobject</param>
@@ -160,14 +182,7 @@
 			</result>
 		</action>
 
-
-
 	</package>
-
-
-
-
-
 
 	<package name="struts2" extends="json-default">
 		<action name="fileUploadAction" class="com.ajaxfile.action.FileAction">

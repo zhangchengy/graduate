@@ -12,6 +12,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import shop.customer.domain.Customer;
 import shop.customer.service.CustomerService;
+import shop.manager.domain.Manager;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -50,6 +51,24 @@ public class CustomerAction extends ActionSupport implements SessionAware,
 		customerService.customerregister(customer);
 		session.put("user", customer);
 		
+		return SUCCESS;
+	}
+	
+	public String userpassalter(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String oldPassword=request.getParameter("oldPassword");
+		String newPassword=request.getParameter("newPassword");
+		customer=(Customer) this.session.get("user");
+		if(oldPassword.equals(customer.getPassword())){
+			msg="one";
+			customerService.alterPassword(customer.getUserphone(),newPassword);
+			jsonobject.put("msg",msg);
+			session.put("user", customer);
+		}
+		else{
+			msg="two";
+			jsonobject.put("msg",msg);
+		}
 		return SUCCESS;
 	}
 	

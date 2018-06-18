@@ -7,6 +7,11 @@
          <id name="cid" column="cid" type="integer" length="20">
              <generator class="native"></generator>
          </id> 
+         
+         <property name="status" type="integer">
+             <column name="status"></column>
+         </property>
+         
         <property name="number"  length="50" type="string">
              <column name="number"></column>
          </property>

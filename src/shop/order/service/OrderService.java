@@ -8,4 +8,5 @@ public interface OrderService {
 	public void saveOrder(Order order);
 	public List<Order> findOrder(String userphone);
 	public List<Order> findAllOrder();
+	public void deleteOrder(int ordernumber);
 }

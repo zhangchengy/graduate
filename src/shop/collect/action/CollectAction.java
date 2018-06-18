@@ -79,7 +79,14 @@ public class CollectAction extends ActionSupport implements SessionAware{
 		}
 		return SUCCESS;
 	}
-	
+	public String deletecollect(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String number=request.getParameter("number");
+		Customer customer=(Customer)this.session.get("user");
+		collectService.deleteCollect(number, customer.getUserphone());
+		jsonobject.put("msg", number);
+		return SUCCESS;
+	}
 	public String findcollect(){
 		Customer customer=(Customer) this.session.get("user");
 		String userphone=customer.getUserphone();

@@ -8,4 +8,5 @@ public interface CollectService {
 	public void saveCollect(Collect collect);
 	public List<Collect> findCollect(String userphone);
 	public boolean existCollect(String number,String userphone);
+	public void deleteCollect(String number,String userphone);
 }

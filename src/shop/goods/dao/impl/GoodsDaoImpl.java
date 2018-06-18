@@ -37,7 +37,7 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Goods> findbyVariety(String variety) {
-		List<Goods> list=this.getHibernateTemplate().find("from Goods g where g.variety=?",variety);
+		List<Goods> list=this.getHibernateTemplate().find("from Goods g where g.variety=? and g.status=1",variety);
 		return list;
 	}
 

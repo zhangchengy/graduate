@@ -10,5 +10,5 @@ public interface CustomerDao {
 	public Customer login(String userphone);
 	public boolean exist(String userphone);
 	public void alter(String userphone,String username,String sex,String userbirthday,String address);
-	
+	public void alterpassword(String userphone,String newpassword);
 }

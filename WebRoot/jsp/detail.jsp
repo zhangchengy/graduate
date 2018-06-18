@@ -75,19 +75,19 @@
 								<td class="hot_sale_lan">热销商品</td>
 							</tr>
 							<tr>
-								<td class="hot_goods1">1</td>
+								<td class="hot_goods1"><img src="photo/weiyu3.jpg" class="hot_goods_img"></td>
 							</tr>
 							<tr>
-								<td class="hot_goods2">2</td>
+								<td class="hot_goods2"><img src="photo/chufang2.jpg" class="hot_goods_img"></td>
 							</tr>
 							<tr>
-								<td class="hot_goods3">3</td>
+								<td class="hot_goods3"><img src="photo/keting2.jpg" class="hot_goods_img">3</td>
 							</tr>
 							<tr>
-								<td class="hot_goods4">4</td>
+								<td class="hot_goods4"><img src="photo/woshi2.jpg" class="hot_goods_img"></td>
 							</tr>
 							<tr>
-								<td class="hot_goods5">5</td>
+								<td class="hot_goods5"><img src="photo/qita2.jpg" class="hot_goods_img"></td>
 							</tr>
 							<table>
 								<img src="" id="image_say_img">

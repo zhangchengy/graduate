@@ -30,4 +30,10 @@ public class OrderServiceImpl implements OrderService{
 		return orderDao.findAllOrder();
 	}
 
+	@Override
+	public void deleteOrder(int ordernumber) {
+		// TODO Auto-generated method stub
+		orderDao.delete(ordernumber);
+	}
+
 }

@@ -6,7 +6,11 @@
      <class name="shop.goods.domain.Goods" table="goods">
          <id name="number" column="number" type="string" length="20">
              <generator class="assigned"></generator>
-         </id> 
+         </id>
+         
+          <property name="status" type="integer">
+             <column name="status"></column>
+         </property>         
          <property name="style"  length="10" type="string">
              <column name="style"></column>
          </property>

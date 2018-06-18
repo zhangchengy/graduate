@@ -6,8 +6,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import net.sf.json.JSONObject;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
 import shop.customer.domain.Customer;
@@ -58,6 +61,7 @@ public class OrderAction extends ActionSupport implements SessionAware{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
         String ordertime = sdf.format(d);
         order.setOrdertime(ordertime);
+        order.setStatus(1);
         orderService.saveOrder(order);
         return SUCCESS;
 	}
@@ -85,17 +89,31 @@ public class OrderAction extends ActionSupport implements SessionAware{
 		return SUCCESS;
 	}
 	
+	public String deleteorder(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		int ordernumber=Integer.parseInt(request.getParameter("ordernumber"));
+		orderService.deleteOrder(ordernumber);
+		jsonobject.put("msg",ordernumber);
+		return SUCCESS;
+	}
+	
 	public String findorder(){
 		Customer customer=(Customer) this.session.get("user");
 		String userphone=customer.getUserphone();
 		List<Order> list=orderService.findOrder(userphone);
 		ArrayList<Goods> goodsorder=new ArrayList<Goods>();
 		ArrayList<String> ordertime=new ArrayList<String>();
+		ArrayList<Integer> ordernumber=new ArrayList<Integer>();
+		ArrayList<Integer> orderstatus=new ArrayList<Integer>();
 		for(int i=0;i<list.size();i++){
 			goodsorder.add(goodsService.findGoodsByNumber(list.get(i).getNumber()));
 			ordertime.add(list.get(i).getOrdertime());
+			ordernumber.add(list.get(i).getCid());
+			orderstatus.add(list.get(i).getStatus());
 		}
 		jsonobject.put("list", goodsorder);
+		jsonobject.put("ordernumber",ordernumber);
+		jsonobject.put("orderstatus",orderstatus);
 		jsonobject.put("ordertime",ordertime);
 		jsonobject.put("msg", "find successfully!");
 		return SUCCESS;

@@ -8,4 +8,5 @@ public interface CollectDao {
 	public void save(Collect collect);
 	public List<Collect> find(String userphone);
 	public boolean exist(String number,String userphone);
+	public void delete(String number,String userphone);
 }

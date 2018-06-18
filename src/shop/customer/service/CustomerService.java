@@ -7,4 +7,5 @@ public interface CustomerService {
 		public Customer customerlogin(String userphone);
 		public boolean customerexist(String userphone);
 		public void informalter(String userphone,String username,String sex,String userbirthday,String address);
+		public void alterPassword(String userphone,String newpassword);
 }

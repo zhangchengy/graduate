@@ -30,4 +30,10 @@ public class CollectServiceImpl implements CollectService {
 		return collectDao.exist(number, userphone);
 	}
 
+	@Override
+	public void deleteCollect(String number, String userphone) {
+		// TODO Auto-generated method stub
+		collectDao.delete(number, userphone);
+	}
+
 }

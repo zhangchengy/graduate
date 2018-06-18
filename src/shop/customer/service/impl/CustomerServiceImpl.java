@@ -29,5 +29,11 @@ public class CustomerServiceImpl implements CustomerService{
 		customerDao.alter(userphone,username,sex,userbirthday,address);
 		
 	}
+
+	@Override
+	public void alterPassword(String userphone, String newpassword) {
+		// TODO Auto-generated method stub
+		customerDao.alterpassword(userphone, newpassword);
+	}
 	
 }

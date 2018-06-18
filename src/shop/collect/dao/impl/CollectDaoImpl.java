@@ -33,4 +33,18 @@ public class CollectDaoImpl extends HibernateDaoSupport implements CollectDao {
 		else return false;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public void delete(String number, String userphone) {
+		// TODO Auto-generated method stub
+		Collect collect=new Collect();
+		collect.setNumber(number);
+		collect.setUserphone(userphone);
+		List<Collect> list=this.getHibernateTemplate().findByExample(collect);
+		Collect c=list.get(0);
+		int cid=c.getCid();
+		collect.setCid(cid);
+		this.getHibernateTemplate().delete(collect);
+	}
+
 }

@@ -9,4 +9,5 @@ public interface OrderDao {
 	public void save(Order order);
 	public List<Order> find(String userphone);
 	public List<Order> findAllOrder();
+	public void delete(int ordernumber);
 }

@@ -6,19 +6,27 @@ public class Order {
 	private String number;
 	private String userphone;
 	private String ordertime;
+	private int status;
 	public Order(){
 		
 	}
 	
-	public Order(int cid, String number, String userphone,String ordertime) {
+	public Order(int cid, String number, String userphone,String ordertime,int status) {
 		this.cid = cid;
 		this.number = number;
 		this.userphone = userphone;
 		this.ordertime=ordertime;
+		this.status=status;
 	}
 	
-	
-	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public String getOrdertime() {
 		return ordertime;
 	}
