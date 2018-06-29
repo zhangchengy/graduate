@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+     <class name="shop.manager.domain.Manager" table="manager">
+         <id name="phone" column="phone" type="string">
+             <generator class="assigned"></generator>
+         </id>
+         
+         <property name="sex" length="5">  
+             <column name="sex"></column>
+         </property>
+         <property name="name"  length="20" type="string">
+             <column name="name"></column>
+         </property>
+         <property name="password"  length="20" type="string">
+             <column name="password"></column>
+         </property>
+         <property name="address"  length="100" type="string">
+             <column name="address"></column>
+         </property>
+         <property name="birthday" type="string"  >
+             <column name="birthday"></column>
+         </property>
+         <property name="post" type="string"  >
+             <column name="post"></column>
+         </property>
+     </class>
+ </hibernate-mapping>

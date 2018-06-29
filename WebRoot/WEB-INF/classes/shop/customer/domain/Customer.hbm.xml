@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+     <class name="shop.customer.domain.Customer" table="customer">
+         <id name="userphone" column="userphone" type="string">
+             <generator class="assigned"></generator>
+         </id>
+         
+         <property name="sex" length="5">  
+             <column name="sex"></column>
+         </property>
+         <property name="username"  length="20" type="string">
+             <column name="username"></column>
+         </property>
+         <property name="password"  length="20" type="string">
+             <column name="password"></column>
+         </property>
+         <property name="address"  length="100" type="string">
+             <column name="address"></column>
+         </property>
+         <property name="userbirthday" type="string"  >
+             <column name="userbirthday"></column>
+         </property>
+     </class>
+ </hibernate-mapping>

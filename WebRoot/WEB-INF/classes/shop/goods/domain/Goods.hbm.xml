@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+     <class name="shop.goods.domain.Goods" table="goods">
+         <id name="number" column="number" type="string" length="20">
+             <generator class="assigned"></generator>
+         </id>
+         
+          <property name="status" type="integer">
+             <column name="status"></column>
+         </property>         
+         <property name="style"  length="10" type="string">
+             <column name="style"></column>
+         </property>
+         <property name="brief"  length="300" type="string">
+             <column name="brief"></column>
+         </property>        
+         <property name="name"  length="40" type="string">
+             <column name="name"></column>
+         </property>
+         <property name="variety"  length="20" type="string">
+             <column name="variety"></column>
+         </property>
+         <property name="price"   type="double">
+             <column name="price"></column>
+         </property>
+         <property name="image"   type="string" length="40">
+             <column name="image"></column>
+         </property>  
+         <property name="imagesay"   type="string" length="40">
+             <column name="imagesay"></column>
+         </property> 
+         <property name="intro" type="string" length="300">
+             <column name="intro"></column>
+         </property>
+     </class>
+</hibernate-mapping>
