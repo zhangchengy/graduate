@@ -71,12 +71,13 @@ public class OrderAction extends ActionSupport implements SessionAware{
 		ArrayList<String[]> arrayList=new ArrayList<String[]>();
 		for(int i=0;i<list.size();i++)
 		{
-			String[] order=new String[6];
+			String[] order=new String[8];
 			order[0]=list.get(i).getUserphone();
+			order[6]=String.valueOf(list.get(i).getStatus());
 			Customer customer=customerService.customerlogin(list.get(i).getUserphone());
 			order[1]=customer.getUsername();
 			order[5]=customer.getAddress();
-			
+			order[7]=String.valueOf(list.get(i).getCid());
 			order[2]=list.get(i).getNumber();
 			Goods goods=goodsService.findGoodsByNumber(list.get(i).getNumber());
 			order[3]=goods.getName();
@@ -93,6 +94,14 @@ public class OrderAction extends ActionSupport implements SessionAware{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		int ordernumber=Integer.parseInt(request.getParameter("ordernumber"));
 		orderService.deleteOrder(ordernumber);
+		jsonobject.put("msg",ordernumber);
+		return SUCCESS;
+	}
+	
+	public String finishorder(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		int ordernumber=Integer.parseInt(request.getParameter("ordernumber"));
+		orderService.finishOrder(ordernumber);
 		jsonobject.put("msg",ordernumber);
 		return SUCCESS;
 	}

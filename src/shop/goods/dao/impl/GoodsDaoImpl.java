@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import shop.customer.domain.Customer;
 import shop.goods.dao.GoodsDao;
 import shop.goods.domain.Goods;
+import shop.order.domain.Order;
 
 public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 
@@ -46,6 +48,40 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements GoodsDao {
 	public List<Goods> findAllGoods() {
 		// TODO Auto-generated method stub
 		return this.getHibernateTemplate().find("from Goods");
+	}
+
+	@Override
+	public void down(String number) {
+		// TODO Auto-generated method stub
+		Goods goods=this.getHibernateTemplate().get(Goods.class, number);
+		goods.setStatus(0);
+		this.getHibernateTemplate().update(goods);
+	}
+
+	@Override
+	public void alter(String name, String number, String brief, String variety,
+			String style, double price, String intro, String image,
+			String imagesay, int status) {
+		// TODO Auto-generated method stub
+		Goods goods=this.getHibernateTemplate().get(Goods.class,number);
+		goods.setBrief(brief);
+		goods.setName(name);
+		goods.setImage(image);
+		goods.setImagesay(imagesay);
+		goods.setIntro(intro);
+		goods.setPrice(price);
+		goods.setVariety(variety);
+		goods.setStatus(status);
+		goods.setStyle(style);
+		this.getHibernateTemplate().update(goods);
+	}
+
+	@Override
+	public boolean exist(String number) {
+		// TODO Auto-generated method stub
+		Goods goods=this.getHibernateTemplate().get(Goods.class,number);
+		if(goods!=null){return true;}
+		else {return false;}
 	}
 
 }

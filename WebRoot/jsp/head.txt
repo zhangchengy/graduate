@@ -49,7 +49,7 @@
                         }
                     });                             
                     if(customer==null){
-                        if(location.pathname=="/dingwang/jsp/center.jsp"||location.pathname=="/dingwang/jsp/collect.jsp"||location.pathname=="/dingwang/jsp/order.jsp"){ 
+                        if(location.pathname=="/ding/jsp/center.jsp"||location.pathname=="/ding/jsp/collect.jsp"||location.pathname=="/ding/jsp/order.jsp"){ 
                             location.href="jsp/login.jsp";                             
                         }
                     }                   

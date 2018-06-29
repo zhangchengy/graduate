@@ -53,7 +53,7 @@ public class FileAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         
-        String path = ServletActionContext.getServletContext().getRealPath("/upload");
+        String path = ServletActionContext.getServletContext().getRealPath("/photo");
 
         try {
             File f = this.getFile();

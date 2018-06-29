@@ -39,4 +39,24 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsDao.findAllGoods();
 	}
 
+	@Override
+	public void downGoods(String number) {
+		// TODO Auto-generated method stub
+		goodsDao.down(number);
+	}
+
+	@Override
+	public void alterGoods(String name, String number, String brief,
+			String variety, String style, double price, String intro,
+			String image, String imagesay, int status) {
+		// TODO Auto-generated method stub
+		goodsDao.alter(name, number, brief, variety, style, price, intro, image, imagesay, status);
+	}
+
+	@Override
+	public boolean existNumber(String number) {
+		// TODO Auto-generated method stub
+		return goodsDao.exist(number);
+	}
+
 }

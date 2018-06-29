@@ -17,13 +17,42 @@
                         
                     }
                 }
+
+            $(document).ready(function () {                   
+                    $.ajax({
+                        type: "POST",
+                        url: "managersessionask",
+                        async:false, 
+                        data: {
+                        },
+                        dataType : "json",
+                        success: function (data) {
+                            if(data!=null){
+                            $("#admin_name").html(data.name);
+                            
+                            manager=data.name;
+                            }
+                            else{
+                                manager=null;
+                            }                           
+                        },
+                        error: function (jqXHR) {
+                            alert("发生错误：" + jqXHR.status);
+                        }
+                    });                             
+                    if(manager==null){
+                        if(location.pathname!="/ding/manager/login.jsp"){ 
+                            location.href="manager/login.jsp";                             
+                        }
+                    }                   
+                });
 </script>
 <!--头部-->
 <header class="publicHeader">
     <h1>集成吊顶后台管理系统</h1>
 
     <div class="publicHeaderR">
-        <p><span>下午好！</span><span id="admin_name">张成扬</span> , 欢迎你！</p>
+        <p><span>下午好！</span><span id="admin_name"></span> , 欢迎你！</p>
         <a href="javascript:logout();">退出</a>
     </div>
 </header>
@@ -37,9 +66,9 @@
         <h2 class="leftH2">功能列表</h2>
         <nav>
             <ul class="list">
-                <li ><a href="manager/billList.jsp">库存管理</a></li>
-                <li><a href="manager/providerList.jsp">预约管理</a></li>
-                <li><a href="manager/userList.jsp">用户管理</a></li>
+                <li ><a href="manager/goodslist.jsp">库存管理</a></li>
+                <li><a href="manager/orderlist.jsp">预约管理</a></li>
+                <li><a href="manager/userlist.jsp">用户管理</a></li>
                 <li><a href="manager/password.jsp">密码修改</a></li>
                 <li><a href="javascript:logout();">退出系统</a></li>
             </ul>

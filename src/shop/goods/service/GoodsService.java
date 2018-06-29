@@ -11,4 +11,7 @@ public interface GoodsService {
 	public Goods findGoodsByNumber(String number);
 	public List<Goods> findGoodsByVariety(String variety);
 	public List<Goods> findAllGoods();
+	public void downGoods(String number);
+	public boolean existNumber(String number);
+	public void alterGoods(String name,String number,String brief,String variety,String style,double price,String intro,String image,String imagesay,int status);
 }

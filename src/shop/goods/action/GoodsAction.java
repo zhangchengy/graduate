@@ -48,6 +48,18 @@ public class GoodsAction extends ActionSupport implements
 	}
 	
 	public String addGoods(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String number=request.getParameter("number");
+		String name=request.getParameter("name");
+		String brief=request.getParameter("brief");
+		String variety=request.getParameter("variety");
+		String style=request.getParameter("style");
+		double price=Double.parseDouble(request.getParameter("price"));
+		String intro=request.getParameter("intro");
+		String image=request.getParameter("image");
+		String imagesay=request.getParameter("imagesay");
+		int status=Integer.parseInt(request.getParameter("status"));
+		Goods goods=new Goods(style,number,name,variety,price,image,imagesay,intro,brief,status);	
 		goodsService.addGoods(goods);
 		return SUCCESS;
 	}
@@ -59,6 +71,38 @@ public class GoodsAction extends ActionSupport implements
 		jsonobject.put("msg", msg);
 		jsonobject.put("goods", goods);
 		session.put("goods", goods);
+		return SUCCESS;
+	}
+	
+	public String existnumber(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String number=request.getParameter("number");
+		boolean bool=goodsService.existNumber(number);
+		jsonobject.put("msg", bool);
+		return SUCCESS;
+	}
+	
+	public String altergoods(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String number=request.getParameter("number");
+		String name=request.getParameter("name");
+		String brief=request.getParameter("brief");
+		String variety=request.getParameter("variety");
+		String style=request.getParameter("style");
+		double price=Double.parseDouble(request.getParameter("price"));
+		String intro=request.getParameter("intro");
+		String image=request.getParameter("image");
+		String imagesay=request.getParameter("imagesay");
+		int status=Integer.parseInt(request.getParameter("status"));
+		goodsService.alterGoods(name, number, brief, variety, style, price, intro, image, imagesay, status);
+		return SUCCESS;
+	}
+	
+	public String downgoods(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String number=request.getParameter("number");
+		goodsService.downGoods(number);
+		jsonobject.put("msg",number);
 		return SUCCESS;
 	}
 	

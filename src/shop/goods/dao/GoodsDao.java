@@ -11,4 +11,7 @@ public interface GoodsDao {
 	public List<Goods> findbyName(String name);
 	public List<Goods> findbyVariety(String variety);
 	public List<Goods> findAllGoods();
+	public void down(String number);
+	public boolean exist(String number);
+	public void alter(String name,String number,String brief,String variety,String style,double price,String intro,String image,String imagesay,int status);
 }

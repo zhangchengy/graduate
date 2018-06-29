@@ -16,6 +16,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 
 
+
 import shop.manager.domain.Manager;
 import shop.manager.service.ManagerService;
 
@@ -79,6 +80,55 @@ ModelDriven<Manager> {
 		msg="find successfully";
 		jsonobject.put("msg",msg);
 		jsonobject.put("list",list);
+		return SUCCESS;
+	}
+	
+	public String addManager(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String phone=request.getParameter("phone");
+		String name=request.getParameter("name");
+		String password=request.getParameter("password");
+		String address=request.getParameter("address");
+		String birthday=request.getParameter("birthday");
+		String post=request.getParameter("post");
+		String sex=request.getParameter("sex");
+		manager=new Manager(name,phone,birthday,sex,address, post,password);
+		managerService.addManager(manager);
+		return SUCCESS;
+	}
+	
+	public String deleteManager(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String phone=request.getParameter("phone");
+		managerService.deleteManager(phone);
+		jsonobject.put("msg",phone);
+		return SUCCESS;
+	}
+	
+	public String sessionManager(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String phone=request.getParameter("phone");
+		manager=managerService.loginManager(phone);
+		return SUCCESS;
+	}
+	
+	public String alterManager(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String phone=request.getParameter("phone");
+		String name=request.getParameter("name");
+		String address=request.getParameter("address");
+		String birthday=request.getParameter("birthday");
+		String post=request.getParameter("post");
+		String sex=request.getParameter("sex");
+		managerService.alterManager(phone, name, sex, birthday, address, post);		
+		return SUCCESS;
+	}
+	
+	public String existManager(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String phone=request.getParameter("phone");
+		boolean bool=managerService.existManager(phone);
+		jsonobject.put("msg", bool);
 		return SUCCESS;
 	}
 	

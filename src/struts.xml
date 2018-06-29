@@ -8,14 +8,27 @@
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.il8n.encoding" value="UTF-8"></constant>
 	<package name="default" extends="json-default">
-		<action name="register" class="customerAction" method="register">
+	<action name="register" class="customerAction" method="register">
 			<result type="json">
 				<param name="root">customer</param>
 			</result>
 
 		</action>
 
+		<action name="downfromgoods" class="goodsAction" method="downgoods">
+			<result type="json">
+				<param name="root">jsonobject</param>
 
+			</result>
+		</action>
+		<action name="alterfromgoods" class="goodsAction" method="altergoods">
+			<result type="json">
+				<param name="root">jsonobject</param>
+
+			</result>
+		</action>
+		
+		
 		<action name="goodsfind" class="goodsAction" method="goodssearch">
 			<result type="json">
 				<param name="root">jsonobject</param>
@@ -53,6 +66,21 @@
 			</result>
 		</action>
 
+		<action name="managersessionask" class="shop.manager.action.SessionAction"
+			method="send">
+			<result type="json">
+				<param name="root">manager</param>
+
+			</result>
+		</action>
+		
+		<action name="sessionaltermanager" class="managerAction" method="sessionManager">
+			<result type="json">
+				<param name="root">manager</param>
+
+			</result>
+		</action>
+		
 		<action name="sessionlist" class="shop.goods.action.SessionAction"
 			method="sendlist">
 			<result type="json">
@@ -116,6 +144,13 @@
 			</result>
 		</action>
 		
+		<action name="finishfromorder" class="shop.order.action.OrderAction"
+			method="finishorder">
+			<result type="json">
+				<param name="root">jsonobject</param>
+			</result>
+		</action>
+		
 		<action name="findcollectlist" class="shop.collect.action.CollectAction"
 			method="findcollect">
 			<result type="json">
@@ -160,6 +195,35 @@
 			</result>
 		</action>
 		
+		<action name="alterfrommanager" class="managerAction" method="alterManager">
+			<result type="json">
+				<param name="root">jsonobject</param>
+
+			</result>
+		</action>
+		
+		<action name="addfrommanager" class="managerAction" method="addManager">
+			<result type="json">
+				<param name="root">jsonobject</param>
+
+			</result>
+		</action>
+		
+				<action name="existfrommanager" class="managerAction" method="existManager">
+			<result type="json">
+				<param name="root">jsonobject</param>
+
+			</result>
+		</action>
+		
+		<action name="deletefrommanager" class="managerAction" method="deleteManager">
+			<result type="json">
+				<param name="root">jsonobject</param>
+
+			</result>
+		</action>
+		
+		
 		<action name="passwordalter" class="managerAction" method="passalter">
 			<result type="json">
 				<param name="root">jsonobject</param>
@@ -176,6 +240,20 @@
 		
 		
 		<action name="isexistphone" class="customerAction" method="existphone">
+			<result type="json">
+				<param name="root">jsonobject</param>
+
+			</result>
+		</action>
+		
+		<action name="isexistnumber" class="goodsAction" method="existnumber">
+			<result type="json">
+				<param name="root">jsonobject</param>
+
+			</result>
+		</action>
+		
+		<action name="savefromgoods" class="goodsAction" method="addGoods">
 			<result type="json">
 				<param name="root">jsonobject</param>
 

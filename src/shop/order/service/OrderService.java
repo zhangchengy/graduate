@@ -9,4 +9,5 @@ public interface OrderService {
 	public List<Order> findOrder(String userphone);
 	public List<Order> findAllOrder();
 	public void deleteOrder(int ordernumber);
+	public void finishOrder(int ordernumber);
 }

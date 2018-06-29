@@ -10,4 +10,5 @@ public interface OrderDao {
 	public List<Order> find(String userphone);
 	public List<Order> findAllOrder();
 	public void delete(int ordernumber);
+	public void finish(int ordernumber);
 }
